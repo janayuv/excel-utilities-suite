@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# License secret — never commit
+Utilities/Services/LicenseSalt.cs

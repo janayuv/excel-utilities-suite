@@ -303,6 +303,8 @@
     <Compile Include="Services\KeyboardHook.cs" />
     <Compile Include="Services\GridFocusService.cs" />
     <Compile Include="Services\RealLicenseService.cs" />
+    <Compile Include="Services\LicenseSalt.cs" />
+    <Compile Include="Services\LicenseSalt.example.cs" />
     <Compile Include="Commands\Tools\GridFocusCommand.cs" />
     <Compile Include="Commands\Tools\LicenseCommand.cs" />
     <Compile Include="Ribbon\RibbonController.cs" />

@@ -31,9 +31,9 @@ namespace utilities.Services
         private const int TrialDays        = 30;
         private const int OfflineGraceDays = 14;
 
-        // Change before shipping — this is the HMAC secret.
+        // Secret loaded from LicenseSalt.cs (gitignored — never committed).
         private static readonly byte[] _salt =
-            Encoding.UTF8.GetBytes("EUS-2024-k9mP#xQ7vR2nZ");
+            Encoding.UTF8.GetBytes(LicenseSalt.Value);
 
         // ── Cached state ──────────────────────────────────────────────────────
         private LicenseState _state;
