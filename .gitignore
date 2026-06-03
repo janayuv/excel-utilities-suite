@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 # License secret — never commit
 Utilities/Services/LicenseSalt.cs
+ChatGPT API.txt
