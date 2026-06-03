@@ -4,39 +4,51 @@ using System.Text;
 
 /// <summary>
 /// Developer key generator for Excel Utilities Suite.
-/// Usage: KeyGen.exe [MachineId]
-/// MachineId is shown in Suite tab -> Activate License dialog on the user's PC.
+/// Usage: KeyGen.exe [MachineId] --salt YOUR_HMAC_SECRET
+/// The salt must match LicenseSalt.Value in the add-in.
+/// MachineId is shown in Suite tab -> Activate License dialog.
 /// </summary>
 class KeyGen
 {
-    // Must match RealLicenseService._salt exactly
-    private static readonly byte[] Salt =
-        Encoding.UTF8.GetBytes("EUS-2024-k9mP#xQ7vR2nZ");
-
     static void Main(string[] args)
     {
         Console.WriteLine("=== Excel Utilities Suite — Key Generator ===");
         Console.WriteLine();
 
-        string machineId;
-        if (args.Length > 0)
+        // Parse --salt argument
+        string salt = null;
+        string machineId = null;
+        for (int i = 0; i < args.Length; i++)
         {
-            machineId = args[0].Trim().ToUpperInvariant();
-            Console.WriteLine("Machine ID: " + machineId);
+            if (args[i] == "--salt" && i + 1 < args.Length)
+                salt = args[++i];
+            else if (machineId == null)
+                machineId = args[i].Trim().ToUpperInvariant();
         }
-        else
+
+        if (string.IsNullOrEmpty(salt))
+        {
+            Console.Write("Enter HMAC salt (from LicenseSalt.cs): ");
+            salt = Console.ReadLine() ?? "";
+        }
+        if (string.IsNullOrEmpty(salt))
+        {
+            Console.WriteLine("ERROR: Salt cannot be empty.");
+            Pause(); return;
+        }
+
+        if (string.IsNullOrEmpty(machineId))
         {
             Console.Write("Enter Machine ID (from Activate License dialog): ");
             machineId = (Console.ReadLine() ?? "").Trim().ToUpperInvariant();
         }
-
         if (machineId.Length == 0)
         {
             Console.WriteLine("ERROR: Machine ID cannot be empty.");
             Pause(); return;
         }
 
-        string key = GenerateKey(machineId);
+        string key = GenerateKey(machineId, salt);
 
         Console.WriteLine();
         Console.WriteLine("Product key for this machine:");
@@ -49,13 +61,17 @@ class KeyGen
         Console.WriteLine();
         Console.Write("Generate another key for the same machine? (y/n): ");
         if ((Console.ReadLine() ?? "").Trim().ToLower() == "y")
-            Main(new[] { machineId });
+        {
+            // Pass salt via args on recursive call
+            Main(new[] { machineId, "--salt", salt });
+        }
         else
             Pause();
     }
 
-    static string GenerateKey(string machineId)
+    static string GenerateKey(string machineId, string saltStr)
     {
+        byte[] saltBytes = System.Text.Encoding.UTF8.GetBytes(saltStr);
         byte[] rand = new byte[6];
         using (var rng = new RNGCryptoServiceProvider())
             rng.GetBytes(rand);
@@ -63,9 +79,9 @@ class KeyGen
         string body = BitConverter.ToString(rand).Replace("-", "");
         string msg  = (machineId + body).ToUpperInvariant();
 
-        using (var hmac = new HMACSHA256(Salt))
+        using (var hmac = new HMACSHA256(saltBytes))
         {
-            byte[] hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(msg));
+            byte[] hash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(msg));
             string tag  = BitConverter.ToString(hash, 0, 4).Replace("-", "");
             string full = body + tag;
             return full.Substring(0,5)+"-"+full.Substring(5,5)+"-"+
