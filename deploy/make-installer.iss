@@ -9,9 +9,9 @@
 ; e.g.:   1.0.0
 ;         1.0.0.0
 #define VERSIONFILE "VERSION.TXT"
-#define SEMANTIC_VERSION    "1.0.0"
-#define FOUR_NUMBER_VERSION "1.0.0.0"
-#define PUB_YEARS           "2024"
+#define SEMANTIC_VERSION    "1.1.0"
+#define FOUR_NUMBER_VERSION "1.1.0.0"
+#define PUB_YEARS           "2024-2026"
 
 ; ── Add-in identity ───────────────────────────────────────────────────
 #define TARGET_HOST      "excel"

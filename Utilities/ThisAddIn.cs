@@ -21,6 +21,9 @@ namespace utilities
                 // Keep the Undo button's enabled-state and label in sync with the selection.
                 this.Application.SheetSelectionChange += OnSheetSelectionChange;
 
+                // Release the cached sheet COM reference before the workbook is gone.
+                this.Application.WorkbookBeforeClose += OnWorkbookBeforeClose;
+
                 // Intercept Ctrl+Z: consume it when the add-in stack has something,
                 // otherwise the key falls through to Excel's native undo.
                 KeyboardHook.Install(() =>
@@ -37,6 +40,11 @@ namespace utilities
             }
         }
 
+        private void OnWorkbookBeforeClose(Excel.Workbook wb, ref bool cancel)
+        {
+            GridFocusService.ClearLastSheet();
+        }
+
         private void OnSheetSelectionChange(object sh, Excel.Range target)
         {
             GridFocusService.OnSelectionChange(this.Application);
@@ -47,8 +55,8 @@ namespace utilities
         {
             KeyboardHook.Uninstall();
             try { GridFocusService.ClearAll(this.Application); } catch { }
-            try { this.Application.SheetSelectionChange -= OnSheetSelectionChange; }
-            catch { }
+            try { this.Application.SheetSelectionChange -= OnSheetSelectionChange; } catch { }
+            try { this.Application.WorkbookBeforeClose -= OnWorkbookBeforeClose; } catch { }
         }
 
         protected override IRibbonExtensibility CreateRibbonExtensibilityObject()

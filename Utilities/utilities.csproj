@@ -304,7 +304,6 @@
     <Compile Include="Services\GridFocusService.cs" />
     <Compile Include="Services\RealLicenseService.cs" />
     <Compile Include="Services\LicenseSalt.cs" />
-    <Compile Include="Services\LicenseSalt.example.cs" />
     <Compile Include="Commands\Tools\GridFocusCommand.cs" />
     <Compile Include="Commands\Tools\LicenseCommand.cs" />
     <Compile Include="Ribbon\RibbonController.cs" />
@@ -325,15 +324,75 @@
     <Compile Include="Commands\Tools\SheetManagementCommands.cs" />
     <Compile Include="Commands\Tools\ImportUtilityCommands.cs" />
   </ItemGroup>
-  <!-- Tool icons embedded so getImage can resolve them at runtime. -->
+  <!-- Tool icons embedded so getImage can resolve them at runtime (light 32, light 16, dark 32, dark 16). -->
   <ItemGroup>
+    <EmbeddedResource Include="..\icon\AddBorderToEachPageIcon.png">
+      <Link>Icons\AddBorderToEachPageIcon.png</Link>
+      <LogicalName>Icons.AddBorderToEachPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\AddLeadingZerosIcon.png">
+      <Link>Icons\AddLeadingZerosIcon.png</Link>
+      <LogicalName>Icons.AddLeadingZerosIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\AddLineBreakIcon.png">
+      <Link>Icons\AddLineBreakIcon.png</Link>
+      <LogicalName>Icons.AddLineBreakIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\AddTextIcon.png">
+      <Link>Icons\AddTextIcon.png</Link>
+      <LogicalName>Icons.AddTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\AlternateRowsIcon.png">
+      <Link>Icons\AlternateRowsIcon.png</Link>
+      <LogicalName>Icons.AlternateRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\AutoFitAllIcon.png">
+      <Link>Icons\AutoFitAllIcon.png</Link>
+      <LogicalName>Icons.AutoFitAllIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\BatchRenameSheetsIcon.png">
+      <Link>Icons\BatchRenameSheetsIcon.png</Link>
+      <LogicalName>Icons.BatchRenameSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\CalculateAgeIcon.png">
+      <Link>Icons\CalculateAgeIcon.png</Link>
+      <LogicalName>Icons.CalculateAgeIcon.png</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="..\icon\ChangeCaseIcon.png">
       <Link>Icons\ChangeCaseIcon.png</Link>
       <LogicalName>Icons.ChangeCaseIcon.png</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ChangeSignIcon.png">
+      <Link>Icons\ChangeSignIcon.png</Link>
+      <LogicalName>Icons.ChangeSignIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ClearCondFormattingIcon.png">
+      <Link>Icons\ClearCondFormattingIcon.png</Link>
+      <LogicalName>Icons.ClearCondFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ClearFormattingIcon.png">
+      <Link>Icons\ClearFormattingIcon.png</Link>
+      <LogicalName>Icons.ClearFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ClearHyperlinksIcon.png">
+      <Link>Icons\ClearHyperlinksIcon.png</Link>
+      <LogicalName>Icons.ClearHyperlinksIcon.png</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="..\icon\ColorDuplicatesIcon.png">
       <Link>Icons\ColorDuplicatesIcon.png</Link>
       <LogicalName>Icons.ColorDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\CombineRowsIcon.png">
+      <Link>Icons\CombineRowsIcon.png</Link>
+      <LogicalName>Icons.CombineRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\CompareRangesIcon.png">
+      <Link>Icons\CompareRangesIcon.png</Link>
+      <LogicalName>Icons.CompareRangesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ConvertDateFormatIcon.png">
+      <Link>Icons\ConvertDateFormatIcon.png</Link>
+      <LogicalName>Icons.ConvertDateFormatIcon.png</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="..\icon\ConvertNumbersToTextIcon.png">
       <Link>Icons\ConvertNumbersToTextIcon.png</Link>
@@ -343,17 +402,1513 @@
       <Link>Icons\ConvertTextToNumbersIcon.png</Link>
       <LogicalName>Icons.ConvertTextToNumbersIcon.png</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\CopyCellFormattingIcon.png">
+      <Link>Icons\CopyCellFormattingIcon.png</Link>
+      <LogicalName>Icons.CopyCellFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\CopyPageSetupIcon.png">
+      <Link>Icons\CopyPageSetupIcon.png</Link>
+      <LogicalName>Icons.CopyPageSetupIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\CopySheetsIcon.png">
+      <Link>Icons\CopySheetsIcon.png</Link>
+      <LogicalName>Icons.CopySheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\CopyVisibleCellsIcon.png">
+      <Link>Icons\CopyVisibleCellsIcon.png</Link>
+      <LogicalName>Icons.CopyVisibleCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\CountByColorIcon.png">
+      <Link>Icons\CountByColorIcon.png</Link>
+      <LogicalName>Icons.CountByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\CountWordsIcon.png">
+      <Link>Icons\CountWordsIcon.png</Link>
+      <LogicalName>Icons.CountWordsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\CurrencyFormatIcon.png">
+      <Link>Icons\CurrencyFormatIcon.png</Link>
+      <LogicalName>Icons.CurrencyFormatIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\DeleteBlankRowsIcon.png">
+      <Link>Icons\DeleteBlankRowsIcon.png</Link>
+      <LogicalName>Icons.DeleteBlankRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\DetectDataTypesIcon.png">
+      <Link>Icons\DetectDataTypesIcon.png</Link>
+      <LogicalName>Icons.DetectDataTypesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ExportRangeImageIcon.png">
+      <Link>Icons\ExportRangeImageIcon.png</Link>
+      <LogicalName>Icons.ExportRangeImageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ExportToCsvIcon.png">
+      <Link>Icons\ExportToCsvIcon.png</Link>
+      <LogicalName>Icons.ExportToCsvIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ExportToJsonIcon.png">
+      <Link>Icons\ExportToJsonIcon.png</Link>
+      <LogicalName>Icons.ExportToJsonIcon.png</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="..\icon\ExportToPDFIcon.png">
       <Link>Icons\ExportToPDFIcon.png</Link>
       <LogicalName>Icons.ExportToPDFIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ExtractNumbersIcon.png">
+      <Link>Icons\ExtractNumbersIcon.png</Link>
+      <LogicalName>Icons.ExtractNumbersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ExtractTextIcon.png">
+      <Link>Icons\ExtractTextIcon.png</Link>
+      <LogicalName>Icons.ExtractTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\FillDownBlanksIcon.png">
+      <Link>Icons\FillDownBlanksIcon.png</Link>
+      <LogicalName>Icons.FillDownBlanksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\FindReplaceSheetsIcon.png">
+      <Link>Icons\FindReplaceSheetsIcon.png</Link>
+      <LogicalName>Icons.FindReplaceSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\FlipHorizontalIcon.png">
+      <Link>Icons\FlipHorizontalIcon.png</Link>
+      <LogicalName>Icons.FlipHorizontalIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\FlipVerticalIcon.png">
+      <Link>Icons\FlipVerticalIcon.png</Link>
+      <LogicalName>Icons.FlipVerticalIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\FormulasToValuesIcon.png">
+      <Link>Icons\FormulasToValuesIcon.png</Link>
+      <LogicalName>Icons.FormulasToValuesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\FreezePanesIcon.png">
+      <Link>Icons\FreezePanesIcon.png</Link>
+      <LogicalName>Icons.FreezePanesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\FuzzyDedupeIcon.png">
+      <Link>Icons\FuzzyDedupeIcon.png</Link>
+      <LogicalName>Icons.FuzzyDedupeIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\GridFocusIcon.png">
+      <Link>Icons\GridFocusIcon.png</Link>
+      <LogicalName>Icons.GridFocusIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\HighlightDuplicatesIcon.png">
+      <Link>Icons\HighlightDuplicatesIcon.png</Link>
+      <LogicalName>Icons.HighlightDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ImportFilenamesIcon.png">
+      <Link>Icons\ImportFilenamesIcon.png</Link>
+      <LogicalName>Icons.ImportFilenamesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\InsertBlankRowsIcon.png">
+      <Link>Icons\InsertBlankRowsIcon.png</Link>
+      <LogicalName>Icons.InsertBlankRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\InsertBulletsIcon.png">
+      <Link>Icons\InsertBulletsIcon.png</Link>
+      <LogicalName>Icons.InsertBulletsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\InsertDateSequenceIcon.png">
+      <Link>Icons\InsertDateSequenceIcon.png</Link>
+      <LogicalName>Icons.InsertDateSequenceIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\InsertFileListIcon.png">
+      <Link>Icons\InsertFileListIcon.png</Link>
+      <LogicalName>Icons.InsertFileListIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\InsertPageBreakEveryRowIcon.png">
+      <Link>Icons\InsertPageBreakEveryRowIcon.png</Link>
+      <LogicalName>Icons.InsertPageBreakEveryRowIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\InsertRandomDataIcon.png">
+      <Link>Icons\InsertRandomDataIcon.png</Link>
+      <LogicalName>Icons.InsertRandomDataIcon.png</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="..\icon\InsertSequenceIcon.png">
       <Link>Icons\InsertSequenceIcon.png</Link>
       <LogicalName>Icons.InsertSequenceIcon.png</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\MergeCellsKeepDataIcon.png">
+      <Link>Icons\MergeCellsKeepDataIcon.png</Link>
+      <LogicalName>Icons.MergeCellsKeepDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\MergeWorkbooksIcon.png">
+      <Link>Icons\MergeWorkbooksIcon.png</Link>
+      <LogicalName>Icons.MergeWorkbooksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\NumbersToWordsIcon.png">
+      <Link>Icons\NumbersToWordsIcon.png</Link>
+      <LogicalName>Icons.NumbersToWordsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\PagingSubtotalsIcon.png">
+      <Link>Icons\PagingSubtotalsIcon.png</Link>
+      <LogicalName>Icons.PagingSubtotalsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\PrintChartsOnlyIcon.png">
+      <Link>Icons\PrintChartsOnlyIcon.png</Link>
+      <LogicalName>Icons.PrintChartsOnlyIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\PrintCircleInvalidDataIcon.png">
+      <Link>Icons\PrintCircleInvalidDataIcon.png</Link>
+      <LogicalName>Icons.PrintCircleInvalidDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\PrintCurrentPageIcon.png">
+      <Link>Icons\PrintCurrentPageIcon.png</Link>
+      <LogicalName>Icons.PrintCurrentPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\PrintFirstPageIcon.png">
+      <Link>Icons\PrintFirstPageIcon.png</Link>
+      <LogicalName>Icons.PrintFirstPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\PrintMultipleSelectionsIcon.png">
+      <Link>Icons\PrintMultipleSelectionsIcon.png</Link>
+      <LogicalName>Icons.PrintMultipleSelectionsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\PrintMultipleWorkbooksIcon.png">
+      <Link>Icons\PrintMultipleWorkbooksIcon.png</Link>
+      <LogicalName>Icons.PrintMultipleWorkbooksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\PrintReverseOrderIcon.png">
+      <Link>Icons\PrintReverseOrderIcon.png</Link>
+      <LogicalName>Icons.PrintReverseOrderIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\PrintSpecifiedPagesIcon.png">
+      <Link>Icons\PrintSpecifiedPagesIcon.png</Link>
+      <LogicalName>Icons.PrintSpecifiedPagesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ProperCaseIcon.png">
+      <Link>Icons\ProperCaseIcon.png</Link>
+      <LogicalName>Icons.ProperCaseIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\RefreshPivotsIcon.png">
+      <Link>Icons\RefreshPivotsIcon.png</Link>
+      <LogicalName>Icons.RefreshPivotsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\RemoveApostrophesIcon.png">
+      <Link>Icons\RemoveApostrophesIcon.png</Link>
+      <LogicalName>Icons.RemoveApostrophesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\RemoveCharactersIcon.png">
+      <Link>Icons\RemoveCharactersIcon.png</Link>
+      <LogicalName>Icons.RemoveCharactersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\RemoveDuplicateRowsIcon.png">
+      <Link>Icons\RemoveDuplicateRowsIcon.png</Link>
+      <LogicalName>Icons.RemoveDuplicateRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\RenameSheetsIcon.png">
+      <Link>Icons\RenameSheetsIcon.png</Link>
+      <LogicalName>Icons.RenameSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ReverseTextIcon.png">
+      <Link>Icons\ReverseTextIcon.png</Link>
+      <LogicalName>Icons.ReverseTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\RoundValuesIcon.png">
+      <Link>Icons\RoundValuesIcon.png</Link>
+      <LogicalName>Icons.RoundValuesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectBlankCellsIcon.png">
+      <Link>Icons\SelectBlankCellsIcon.png</Link>
+      <LogicalName>Icons.SelectBlankCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectByColorIcon.png">
+      <Link>Icons\SelectByColorIcon.png</Link>
+      <LogicalName>Icons.SelectByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectByFontColorIcon.png">
+      <Link>Icons\SelectByFontColorIcon.png</Link>
+      <LogicalName>Icons.SelectByFontColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectByValueIcon.png">
+      <Link>Icons\SelectByValueIcon.png</Link>
+      <LogicalName>Icons.SelectByValueIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectDuplicatesIcon.png">
+      <Link>Icons\SelectDuplicatesIcon.png</Link>
+      <LogicalName>Icons.SelectDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectErrorCellsIcon.png">
+      <Link>Icons\SelectErrorCellsIcon.png</Link>
+      <LogicalName>Icons.SelectErrorCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectFirstCellIcon.png">
+      <Link>Icons\SelectFirstCellIcon.png</Link>
+      <LogicalName>Icons.SelectFirstCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectLastCellIcon.png">
+      <Link>Icons\SelectLastCellIcon.png</Link>
+      <LogicalName>Icons.SelectLastCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectMaxCellIcon.png">
+      <Link>Icons\SelectMaxCellIcon.png</Link>
+      <LogicalName>Icons.SelectMaxCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectMinCellIcon.png">
+      <Link>Icons\SelectMinCellIcon.png</Link>
+      <LogicalName>Icons.SelectMinCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectNonBlankCellsIcon.png">
+      <Link>Icons\SelectNonBlankCellsIcon.png</Link>
+      <LogicalName>Icons.SelectNonBlankCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SelectUniquesIcon.png">
+      <Link>Icons\SelectUniquesIcon.png</Link>
+      <LogicalName>Icons.SelectUniquesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SheetsToFilesIcon.png">
+      <Link>Icons\SheetsToFilesIcon.png</Link>
+      <LogicalName>Icons.SheetsToFilesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SheetTOCIcon.png">
+      <Link>Icons\SheetTOCIcon.png</Link>
+      <LogicalName>Icons.SheetTOCIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SortSheetsIcon.png">
+      <Link>Icons\SortSheetsIcon.png</Link>
+      <LogicalName>Icons.SortSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SplitByColumnIcon.png">
+      <Link>Icons\SplitByColumnIcon.png</Link>
+      <LogicalName>Icons.SplitByColumnIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SplitIntoRowsIcon.png">
+      <Link>Icons\SplitIntoRowsIcon.png</Link>
+      <LogicalName>Icons.SplitIntoRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SplitNamesIcon.png">
+      <Link>Icons\SplitNamesIcon.png</Link>
+      <LogicalName>Icons.SplitNamesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SumCountByColorIcon.png">
+      <Link>Icons\SumCountByColorIcon.png</Link>
+      <LogicalName>Icons.SumCountByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SuperSubscriptIcon.png">
+      <Link>Icons\SuperSubscriptIcon.png</Link>
+      <LogicalName>Icons.SuperSubscriptIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\SwapRangesIcon.png">
+      <Link>Icons\SwapRangesIcon.png</Link>
+      <LogicalName>Icons.SwapRangesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\ToggleRefStyleIcon.png">
+      <Link>Icons\ToggleRefStyleIcon.png</Link>
+      <LogicalName>Icons.ToggleRefStyleIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\TransposeRangeIcon.png">
+      <Link>Icons\TransposeRangeIcon.png</Link>
+      <LogicalName>Icons.TransposeRangeIcon.png</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="..\icon\TrimTextIcon.png">
       <Link>Icons\TrimTextIcon.png</Link>
       <LogicalName>Icons.TrimTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\UnhideAllSheetsIcon.png">
+      <Link>Icons\UnhideAllSheetsIcon.png</Link>
+      <LogicalName>Icons.UnhideAllSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\UnitConversionIcon.png">
+      <Link>Icons\UnitConversionIcon.png</Link>
+      <LogicalName>Icons.UnitConversionIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\UnmergeAndFillIcon.png">
+      <Link>Icons\UnmergeAndFillIcon.png</Link>
+      <LogicalName>Icons.UnmergeAndFillIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon\WrapIferrorIcon.png">
+      <Link>Icons\WrapIferrorIcon.png</Link>
+      <LogicalName>Icons.WrapIferrorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\AddBorderToEachPageIcon.png">
+      <Link>Icons16\AddBorderToEachPageIcon.png</Link>
+      <LogicalName>Icons16.AddBorderToEachPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\AddLeadingZerosIcon.png">
+      <Link>Icons16\AddLeadingZerosIcon.png</Link>
+      <LogicalName>Icons16.AddLeadingZerosIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\AddLineBreakIcon.png">
+      <Link>Icons16\AddLineBreakIcon.png</Link>
+      <LogicalName>Icons16.AddLineBreakIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\AddTextIcon.png">
+      <Link>Icons16\AddTextIcon.png</Link>
+      <LogicalName>Icons16.AddTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\AlternateRowsIcon.png">
+      <Link>Icons16\AlternateRowsIcon.png</Link>
+      <LogicalName>Icons16.AlternateRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\AutoFitAllIcon.png">
+      <Link>Icons16\AutoFitAllIcon.png</Link>
+      <LogicalName>Icons16.AutoFitAllIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\BatchRenameSheetsIcon.png">
+      <Link>Icons16\BatchRenameSheetsIcon.png</Link>
+      <LogicalName>Icons16.BatchRenameSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\CalculateAgeIcon.png">
+      <Link>Icons16\CalculateAgeIcon.png</Link>
+      <LogicalName>Icons16.CalculateAgeIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ChangeCaseIcon.png">
+      <Link>Icons16\ChangeCaseIcon.png</Link>
+      <LogicalName>Icons16.ChangeCaseIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ChangeSignIcon.png">
+      <Link>Icons16\ChangeSignIcon.png</Link>
+      <LogicalName>Icons16.ChangeSignIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ClearCondFormattingIcon.png">
+      <Link>Icons16\ClearCondFormattingIcon.png</Link>
+      <LogicalName>Icons16.ClearCondFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ClearFormattingIcon.png">
+      <Link>Icons16\ClearFormattingIcon.png</Link>
+      <LogicalName>Icons16.ClearFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ClearHyperlinksIcon.png">
+      <Link>Icons16\ClearHyperlinksIcon.png</Link>
+      <LogicalName>Icons16.ClearHyperlinksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ColorDuplicatesIcon.png">
+      <Link>Icons16\ColorDuplicatesIcon.png</Link>
+      <LogicalName>Icons16.ColorDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\CombineRowsIcon.png">
+      <Link>Icons16\CombineRowsIcon.png</Link>
+      <LogicalName>Icons16.CombineRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\CompareRangesIcon.png">
+      <Link>Icons16\CompareRangesIcon.png</Link>
+      <LogicalName>Icons16.CompareRangesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ConvertDateFormatIcon.png">
+      <Link>Icons16\ConvertDateFormatIcon.png</Link>
+      <LogicalName>Icons16.ConvertDateFormatIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ConvertNumbersToTextIcon.png">
+      <Link>Icons16\ConvertNumbersToTextIcon.png</Link>
+      <LogicalName>Icons16.ConvertNumbersToTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ConvertTextToNumbersIcon.png">
+      <Link>Icons16\ConvertTextToNumbersIcon.png</Link>
+      <LogicalName>Icons16.ConvertTextToNumbersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\CopyCellFormattingIcon.png">
+      <Link>Icons16\CopyCellFormattingIcon.png</Link>
+      <LogicalName>Icons16.CopyCellFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\CopyPageSetupIcon.png">
+      <Link>Icons16\CopyPageSetupIcon.png</Link>
+      <LogicalName>Icons16.CopyPageSetupIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\CopySheetsIcon.png">
+      <Link>Icons16\CopySheetsIcon.png</Link>
+      <LogicalName>Icons16.CopySheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\CopyVisibleCellsIcon.png">
+      <Link>Icons16\CopyVisibleCellsIcon.png</Link>
+      <LogicalName>Icons16.CopyVisibleCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\CountByColorIcon.png">
+      <Link>Icons16\CountByColorIcon.png</Link>
+      <LogicalName>Icons16.CountByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\CountWordsIcon.png">
+      <Link>Icons16\CountWordsIcon.png</Link>
+      <LogicalName>Icons16.CountWordsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\CurrencyFormatIcon.png">
+      <Link>Icons16\CurrencyFormatIcon.png</Link>
+      <LogicalName>Icons16.CurrencyFormatIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\DeleteBlankRowsIcon.png">
+      <Link>Icons16\DeleteBlankRowsIcon.png</Link>
+      <LogicalName>Icons16.DeleteBlankRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\DetectDataTypesIcon.png">
+      <Link>Icons16\DetectDataTypesIcon.png</Link>
+      <LogicalName>Icons16.DetectDataTypesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ExportRangeImageIcon.png">
+      <Link>Icons16\ExportRangeImageIcon.png</Link>
+      <LogicalName>Icons16.ExportRangeImageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ExportToCsvIcon.png">
+      <Link>Icons16\ExportToCsvIcon.png</Link>
+      <LogicalName>Icons16.ExportToCsvIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ExportToJsonIcon.png">
+      <Link>Icons16\ExportToJsonIcon.png</Link>
+      <LogicalName>Icons16.ExportToJsonIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ExportToPDFIcon.png">
+      <Link>Icons16\ExportToPDFIcon.png</Link>
+      <LogicalName>Icons16.ExportToPDFIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ExtractNumbersIcon.png">
+      <Link>Icons16\ExtractNumbersIcon.png</Link>
+      <LogicalName>Icons16.ExtractNumbersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ExtractTextIcon.png">
+      <Link>Icons16\ExtractTextIcon.png</Link>
+      <LogicalName>Icons16.ExtractTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\FillDownBlanksIcon.png">
+      <Link>Icons16\FillDownBlanksIcon.png</Link>
+      <LogicalName>Icons16.FillDownBlanksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\FindReplaceSheetsIcon.png">
+      <Link>Icons16\FindReplaceSheetsIcon.png</Link>
+      <LogicalName>Icons16.FindReplaceSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\FlipHorizontalIcon.png">
+      <Link>Icons16\FlipHorizontalIcon.png</Link>
+      <LogicalName>Icons16.FlipHorizontalIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\FlipVerticalIcon.png">
+      <Link>Icons16\FlipVerticalIcon.png</Link>
+      <LogicalName>Icons16.FlipVerticalIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\FormulasToValuesIcon.png">
+      <Link>Icons16\FormulasToValuesIcon.png</Link>
+      <LogicalName>Icons16.FormulasToValuesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\FreezePanesIcon.png">
+      <Link>Icons16\FreezePanesIcon.png</Link>
+      <LogicalName>Icons16.FreezePanesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\FuzzyDedupeIcon.png">
+      <Link>Icons16\FuzzyDedupeIcon.png</Link>
+      <LogicalName>Icons16.FuzzyDedupeIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\GridFocusIcon.png">
+      <Link>Icons16\GridFocusIcon.png</Link>
+      <LogicalName>Icons16.GridFocusIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\HighlightDuplicatesIcon.png">
+      <Link>Icons16\HighlightDuplicatesIcon.png</Link>
+      <LogicalName>Icons16.HighlightDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ImportFilenamesIcon.png">
+      <Link>Icons16\ImportFilenamesIcon.png</Link>
+      <LogicalName>Icons16.ImportFilenamesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\InsertBlankRowsIcon.png">
+      <Link>Icons16\InsertBlankRowsIcon.png</Link>
+      <LogicalName>Icons16.InsertBlankRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\InsertBulletsIcon.png">
+      <Link>Icons16\InsertBulletsIcon.png</Link>
+      <LogicalName>Icons16.InsertBulletsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\InsertDateSequenceIcon.png">
+      <Link>Icons16\InsertDateSequenceIcon.png</Link>
+      <LogicalName>Icons16.InsertDateSequenceIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\InsertFileListIcon.png">
+      <Link>Icons16\InsertFileListIcon.png</Link>
+      <LogicalName>Icons16.InsertFileListIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\InsertPageBreakEveryRowIcon.png">
+      <Link>Icons16\InsertPageBreakEveryRowIcon.png</Link>
+      <LogicalName>Icons16.InsertPageBreakEveryRowIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\InsertRandomDataIcon.png">
+      <Link>Icons16\InsertRandomDataIcon.png</Link>
+      <LogicalName>Icons16.InsertRandomDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\InsertSequenceIcon.png">
+      <Link>Icons16\InsertSequenceIcon.png</Link>
+      <LogicalName>Icons16.InsertSequenceIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\MergeCellsKeepDataIcon.png">
+      <Link>Icons16\MergeCellsKeepDataIcon.png</Link>
+      <LogicalName>Icons16.MergeCellsKeepDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\MergeWorkbooksIcon.png">
+      <Link>Icons16\MergeWorkbooksIcon.png</Link>
+      <LogicalName>Icons16.MergeWorkbooksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\NumbersToWordsIcon.png">
+      <Link>Icons16\NumbersToWordsIcon.png</Link>
+      <LogicalName>Icons16.NumbersToWordsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\PagingSubtotalsIcon.png">
+      <Link>Icons16\PagingSubtotalsIcon.png</Link>
+      <LogicalName>Icons16.PagingSubtotalsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\PrintChartsOnlyIcon.png">
+      <Link>Icons16\PrintChartsOnlyIcon.png</Link>
+      <LogicalName>Icons16.PrintChartsOnlyIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\PrintCircleInvalidDataIcon.png">
+      <Link>Icons16\PrintCircleInvalidDataIcon.png</Link>
+      <LogicalName>Icons16.PrintCircleInvalidDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\PrintCurrentPageIcon.png">
+      <Link>Icons16\PrintCurrentPageIcon.png</Link>
+      <LogicalName>Icons16.PrintCurrentPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\PrintFirstPageIcon.png">
+      <Link>Icons16\PrintFirstPageIcon.png</Link>
+      <LogicalName>Icons16.PrintFirstPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\PrintMultipleSelectionsIcon.png">
+      <Link>Icons16\PrintMultipleSelectionsIcon.png</Link>
+      <LogicalName>Icons16.PrintMultipleSelectionsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\PrintMultipleWorkbooksIcon.png">
+      <Link>Icons16\PrintMultipleWorkbooksIcon.png</Link>
+      <LogicalName>Icons16.PrintMultipleWorkbooksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\PrintReverseOrderIcon.png">
+      <Link>Icons16\PrintReverseOrderIcon.png</Link>
+      <LogicalName>Icons16.PrintReverseOrderIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\PrintSpecifiedPagesIcon.png">
+      <Link>Icons16\PrintSpecifiedPagesIcon.png</Link>
+      <LogicalName>Icons16.PrintSpecifiedPagesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ProperCaseIcon.png">
+      <Link>Icons16\ProperCaseIcon.png</Link>
+      <LogicalName>Icons16.ProperCaseIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\RefreshPivotsIcon.png">
+      <Link>Icons16\RefreshPivotsIcon.png</Link>
+      <LogicalName>Icons16.RefreshPivotsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\RemoveApostrophesIcon.png">
+      <Link>Icons16\RemoveApostrophesIcon.png</Link>
+      <LogicalName>Icons16.RemoveApostrophesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\RemoveCharactersIcon.png">
+      <Link>Icons16\RemoveCharactersIcon.png</Link>
+      <LogicalName>Icons16.RemoveCharactersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\RemoveDuplicateRowsIcon.png">
+      <Link>Icons16\RemoveDuplicateRowsIcon.png</Link>
+      <LogicalName>Icons16.RemoveDuplicateRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\RenameSheetsIcon.png">
+      <Link>Icons16\RenameSheetsIcon.png</Link>
+      <LogicalName>Icons16.RenameSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ReverseTextIcon.png">
+      <Link>Icons16\ReverseTextIcon.png</Link>
+      <LogicalName>Icons16.ReverseTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\RoundValuesIcon.png">
+      <Link>Icons16\RoundValuesIcon.png</Link>
+      <LogicalName>Icons16.RoundValuesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectBlankCellsIcon.png">
+      <Link>Icons16\SelectBlankCellsIcon.png</Link>
+      <LogicalName>Icons16.SelectBlankCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectByColorIcon.png">
+      <Link>Icons16\SelectByColorIcon.png</Link>
+      <LogicalName>Icons16.SelectByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectByFontColorIcon.png">
+      <Link>Icons16\SelectByFontColorIcon.png</Link>
+      <LogicalName>Icons16.SelectByFontColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectByValueIcon.png">
+      <Link>Icons16\SelectByValueIcon.png</Link>
+      <LogicalName>Icons16.SelectByValueIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectDuplicatesIcon.png">
+      <Link>Icons16\SelectDuplicatesIcon.png</Link>
+      <LogicalName>Icons16.SelectDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectErrorCellsIcon.png">
+      <Link>Icons16\SelectErrorCellsIcon.png</Link>
+      <LogicalName>Icons16.SelectErrorCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectFirstCellIcon.png">
+      <Link>Icons16\SelectFirstCellIcon.png</Link>
+      <LogicalName>Icons16.SelectFirstCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectLastCellIcon.png">
+      <Link>Icons16\SelectLastCellIcon.png</Link>
+      <LogicalName>Icons16.SelectLastCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectMaxCellIcon.png">
+      <Link>Icons16\SelectMaxCellIcon.png</Link>
+      <LogicalName>Icons16.SelectMaxCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectMinCellIcon.png">
+      <Link>Icons16\SelectMinCellIcon.png</Link>
+      <LogicalName>Icons16.SelectMinCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectNonBlankCellsIcon.png">
+      <Link>Icons16\SelectNonBlankCellsIcon.png</Link>
+      <LogicalName>Icons16.SelectNonBlankCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SelectUniquesIcon.png">
+      <Link>Icons16\SelectUniquesIcon.png</Link>
+      <LogicalName>Icons16.SelectUniquesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SheetsToFilesIcon.png">
+      <Link>Icons16\SheetsToFilesIcon.png</Link>
+      <LogicalName>Icons16.SheetsToFilesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SheetTOCIcon.png">
+      <Link>Icons16\SheetTOCIcon.png</Link>
+      <LogicalName>Icons16.SheetTOCIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SortSheetsIcon.png">
+      <Link>Icons16\SortSheetsIcon.png</Link>
+      <LogicalName>Icons16.SortSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SplitByColumnIcon.png">
+      <Link>Icons16\SplitByColumnIcon.png</Link>
+      <LogicalName>Icons16.SplitByColumnIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SplitIntoRowsIcon.png">
+      <Link>Icons16\SplitIntoRowsIcon.png</Link>
+      <LogicalName>Icons16.SplitIntoRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SplitNamesIcon.png">
+      <Link>Icons16\SplitNamesIcon.png</Link>
+      <LogicalName>Icons16.SplitNamesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SumCountByColorIcon.png">
+      <Link>Icons16\SumCountByColorIcon.png</Link>
+      <LogicalName>Icons16.SumCountByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SuperSubscriptIcon.png">
+      <Link>Icons16\SuperSubscriptIcon.png</Link>
+      <LogicalName>Icons16.SuperSubscriptIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\SwapRangesIcon.png">
+      <Link>Icons16\SwapRangesIcon.png</Link>
+      <LogicalName>Icons16.SwapRangesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\ToggleRefStyleIcon.png">
+      <Link>Icons16\ToggleRefStyleIcon.png</Link>
+      <LogicalName>Icons16.ToggleRefStyleIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\TransposeRangeIcon.png">
+      <Link>Icons16\TransposeRangeIcon.png</Link>
+      <LogicalName>Icons16.TransposeRangeIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\TrimTextIcon.png">
+      <Link>Icons16\TrimTextIcon.png</Link>
+      <LogicalName>Icons16.TrimTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\UnhideAllSheetsIcon.png">
+      <Link>Icons16\UnhideAllSheetsIcon.png</Link>
+      <LogicalName>Icons16.UnhideAllSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\UnitConversionIcon.png">
+      <Link>Icons16\UnitConversionIcon.png</Link>
+      <LogicalName>Icons16.UnitConversionIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\UnmergeAndFillIcon.png">
+      <Link>Icons16\UnmergeAndFillIcon.png</Link>
+      <LogicalName>Icons16.UnmergeAndFillIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-16\WrapIferrorIcon.png">
+      <Link>Icons16\WrapIferrorIcon.png</Link>
+      <LogicalName>Icons16.WrapIferrorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\AddBorderToEachPageIcon.png">
+      <Link>IconsDark\AddBorderToEachPageIcon.png</Link>
+      <LogicalName>IconsDark.AddBorderToEachPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\AddLeadingZerosIcon.png">
+      <Link>IconsDark\AddLeadingZerosIcon.png</Link>
+      <LogicalName>IconsDark.AddLeadingZerosIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\AddLineBreakIcon.png">
+      <Link>IconsDark\AddLineBreakIcon.png</Link>
+      <LogicalName>IconsDark.AddLineBreakIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\AddTextIcon.png">
+      <Link>IconsDark\AddTextIcon.png</Link>
+      <LogicalName>IconsDark.AddTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\AlternateRowsIcon.png">
+      <Link>IconsDark\AlternateRowsIcon.png</Link>
+      <LogicalName>IconsDark.AlternateRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\AutoFitAllIcon.png">
+      <Link>IconsDark\AutoFitAllIcon.png</Link>
+      <LogicalName>IconsDark.AutoFitAllIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\BatchRenameSheetsIcon.png">
+      <Link>IconsDark\BatchRenameSheetsIcon.png</Link>
+      <LogicalName>IconsDark.BatchRenameSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\CalculateAgeIcon.png">
+      <Link>IconsDark\CalculateAgeIcon.png</Link>
+      <LogicalName>IconsDark.CalculateAgeIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ChangeCaseIcon.png">
+      <Link>IconsDark\ChangeCaseIcon.png</Link>
+      <LogicalName>IconsDark.ChangeCaseIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ChangeSignIcon.png">
+      <Link>IconsDark\ChangeSignIcon.png</Link>
+      <LogicalName>IconsDark.ChangeSignIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ClearCondFormattingIcon.png">
+      <Link>IconsDark\ClearCondFormattingIcon.png</Link>
+      <LogicalName>IconsDark.ClearCondFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ClearFormattingIcon.png">
+      <Link>IconsDark\ClearFormattingIcon.png</Link>
+      <LogicalName>IconsDark.ClearFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ClearHyperlinksIcon.png">
+      <Link>IconsDark\ClearHyperlinksIcon.png</Link>
+      <LogicalName>IconsDark.ClearHyperlinksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ColorDuplicatesIcon.png">
+      <Link>IconsDark\ColorDuplicatesIcon.png</Link>
+      <LogicalName>IconsDark.ColorDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\CombineRowsIcon.png">
+      <Link>IconsDark\CombineRowsIcon.png</Link>
+      <LogicalName>IconsDark.CombineRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\CompareRangesIcon.png">
+      <Link>IconsDark\CompareRangesIcon.png</Link>
+      <LogicalName>IconsDark.CompareRangesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ConvertDateFormatIcon.png">
+      <Link>IconsDark\ConvertDateFormatIcon.png</Link>
+      <LogicalName>IconsDark.ConvertDateFormatIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ConvertNumbersToTextIcon.png">
+      <Link>IconsDark\ConvertNumbersToTextIcon.png</Link>
+      <LogicalName>IconsDark.ConvertNumbersToTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ConvertTextToNumbersIcon.png">
+      <Link>IconsDark\ConvertTextToNumbersIcon.png</Link>
+      <LogicalName>IconsDark.ConvertTextToNumbersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\CopyCellFormattingIcon.png">
+      <Link>IconsDark\CopyCellFormattingIcon.png</Link>
+      <LogicalName>IconsDark.CopyCellFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\CopyPageSetupIcon.png">
+      <Link>IconsDark\CopyPageSetupIcon.png</Link>
+      <LogicalName>IconsDark.CopyPageSetupIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\CopySheetsIcon.png">
+      <Link>IconsDark\CopySheetsIcon.png</Link>
+      <LogicalName>IconsDark.CopySheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\CopyVisibleCellsIcon.png">
+      <Link>IconsDark\CopyVisibleCellsIcon.png</Link>
+      <LogicalName>IconsDark.CopyVisibleCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\CountByColorIcon.png">
+      <Link>IconsDark\CountByColorIcon.png</Link>
+      <LogicalName>IconsDark.CountByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\CountWordsIcon.png">
+      <Link>IconsDark\CountWordsIcon.png</Link>
+      <LogicalName>IconsDark.CountWordsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\CurrencyFormatIcon.png">
+      <Link>IconsDark\CurrencyFormatIcon.png</Link>
+      <LogicalName>IconsDark.CurrencyFormatIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\DeleteBlankRowsIcon.png">
+      <Link>IconsDark\DeleteBlankRowsIcon.png</Link>
+      <LogicalName>IconsDark.DeleteBlankRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\DetectDataTypesIcon.png">
+      <Link>IconsDark\DetectDataTypesIcon.png</Link>
+      <LogicalName>IconsDark.DetectDataTypesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ExportRangeImageIcon.png">
+      <Link>IconsDark\ExportRangeImageIcon.png</Link>
+      <LogicalName>IconsDark.ExportRangeImageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ExportToCsvIcon.png">
+      <Link>IconsDark\ExportToCsvIcon.png</Link>
+      <LogicalName>IconsDark.ExportToCsvIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ExportToJsonIcon.png">
+      <Link>IconsDark\ExportToJsonIcon.png</Link>
+      <LogicalName>IconsDark.ExportToJsonIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ExportToPDFIcon.png">
+      <Link>IconsDark\ExportToPDFIcon.png</Link>
+      <LogicalName>IconsDark.ExportToPDFIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ExtractNumbersIcon.png">
+      <Link>IconsDark\ExtractNumbersIcon.png</Link>
+      <LogicalName>IconsDark.ExtractNumbersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ExtractTextIcon.png">
+      <Link>IconsDark\ExtractTextIcon.png</Link>
+      <LogicalName>IconsDark.ExtractTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\FillDownBlanksIcon.png">
+      <Link>IconsDark\FillDownBlanksIcon.png</Link>
+      <LogicalName>IconsDark.FillDownBlanksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\FindReplaceSheetsIcon.png">
+      <Link>IconsDark\FindReplaceSheetsIcon.png</Link>
+      <LogicalName>IconsDark.FindReplaceSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\FlipHorizontalIcon.png">
+      <Link>IconsDark\FlipHorizontalIcon.png</Link>
+      <LogicalName>IconsDark.FlipHorizontalIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\FlipVerticalIcon.png">
+      <Link>IconsDark\FlipVerticalIcon.png</Link>
+      <LogicalName>IconsDark.FlipVerticalIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\FormulasToValuesIcon.png">
+      <Link>IconsDark\FormulasToValuesIcon.png</Link>
+      <LogicalName>IconsDark.FormulasToValuesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\FreezePanesIcon.png">
+      <Link>IconsDark\FreezePanesIcon.png</Link>
+      <LogicalName>IconsDark.FreezePanesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\FuzzyDedupeIcon.png">
+      <Link>IconsDark\FuzzyDedupeIcon.png</Link>
+      <LogicalName>IconsDark.FuzzyDedupeIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\GridFocusIcon.png">
+      <Link>IconsDark\GridFocusIcon.png</Link>
+      <LogicalName>IconsDark.GridFocusIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\HighlightDuplicatesIcon.png">
+      <Link>IconsDark\HighlightDuplicatesIcon.png</Link>
+      <LogicalName>IconsDark.HighlightDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ImportFilenamesIcon.png">
+      <Link>IconsDark\ImportFilenamesIcon.png</Link>
+      <LogicalName>IconsDark.ImportFilenamesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\InsertBlankRowsIcon.png">
+      <Link>IconsDark\InsertBlankRowsIcon.png</Link>
+      <LogicalName>IconsDark.InsertBlankRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\InsertBulletsIcon.png">
+      <Link>IconsDark\InsertBulletsIcon.png</Link>
+      <LogicalName>IconsDark.InsertBulletsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\InsertDateSequenceIcon.png">
+      <Link>IconsDark\InsertDateSequenceIcon.png</Link>
+      <LogicalName>IconsDark.InsertDateSequenceIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\InsertFileListIcon.png">
+      <Link>IconsDark\InsertFileListIcon.png</Link>
+      <LogicalName>IconsDark.InsertFileListIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\InsertPageBreakEveryRowIcon.png">
+      <Link>IconsDark\InsertPageBreakEveryRowIcon.png</Link>
+      <LogicalName>IconsDark.InsertPageBreakEveryRowIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\InsertRandomDataIcon.png">
+      <Link>IconsDark\InsertRandomDataIcon.png</Link>
+      <LogicalName>IconsDark.InsertRandomDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\InsertSequenceIcon.png">
+      <Link>IconsDark\InsertSequenceIcon.png</Link>
+      <LogicalName>IconsDark.InsertSequenceIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\MergeCellsKeepDataIcon.png">
+      <Link>IconsDark\MergeCellsKeepDataIcon.png</Link>
+      <LogicalName>IconsDark.MergeCellsKeepDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\MergeWorkbooksIcon.png">
+      <Link>IconsDark\MergeWorkbooksIcon.png</Link>
+      <LogicalName>IconsDark.MergeWorkbooksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\NumbersToWordsIcon.png">
+      <Link>IconsDark\NumbersToWordsIcon.png</Link>
+      <LogicalName>IconsDark.NumbersToWordsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\PagingSubtotalsIcon.png">
+      <Link>IconsDark\PagingSubtotalsIcon.png</Link>
+      <LogicalName>IconsDark.PagingSubtotalsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\PrintChartsOnlyIcon.png">
+      <Link>IconsDark\PrintChartsOnlyIcon.png</Link>
+      <LogicalName>IconsDark.PrintChartsOnlyIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\PrintCircleInvalidDataIcon.png">
+      <Link>IconsDark\PrintCircleInvalidDataIcon.png</Link>
+      <LogicalName>IconsDark.PrintCircleInvalidDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\PrintCurrentPageIcon.png">
+      <Link>IconsDark\PrintCurrentPageIcon.png</Link>
+      <LogicalName>IconsDark.PrintCurrentPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\PrintFirstPageIcon.png">
+      <Link>IconsDark\PrintFirstPageIcon.png</Link>
+      <LogicalName>IconsDark.PrintFirstPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\PrintMultipleSelectionsIcon.png">
+      <Link>IconsDark\PrintMultipleSelectionsIcon.png</Link>
+      <LogicalName>IconsDark.PrintMultipleSelectionsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\PrintMultipleWorkbooksIcon.png">
+      <Link>IconsDark\PrintMultipleWorkbooksIcon.png</Link>
+      <LogicalName>IconsDark.PrintMultipleWorkbooksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\PrintReverseOrderIcon.png">
+      <Link>IconsDark\PrintReverseOrderIcon.png</Link>
+      <LogicalName>IconsDark.PrintReverseOrderIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\PrintSpecifiedPagesIcon.png">
+      <Link>IconsDark\PrintSpecifiedPagesIcon.png</Link>
+      <LogicalName>IconsDark.PrintSpecifiedPagesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ProperCaseIcon.png">
+      <Link>IconsDark\ProperCaseIcon.png</Link>
+      <LogicalName>IconsDark.ProperCaseIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\RefreshPivotsIcon.png">
+      <Link>IconsDark\RefreshPivotsIcon.png</Link>
+      <LogicalName>IconsDark.RefreshPivotsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\RemoveApostrophesIcon.png">
+      <Link>IconsDark\RemoveApostrophesIcon.png</Link>
+      <LogicalName>IconsDark.RemoveApostrophesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\RemoveCharactersIcon.png">
+      <Link>IconsDark\RemoveCharactersIcon.png</Link>
+      <LogicalName>IconsDark.RemoveCharactersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\RemoveDuplicateRowsIcon.png">
+      <Link>IconsDark\RemoveDuplicateRowsIcon.png</Link>
+      <LogicalName>IconsDark.RemoveDuplicateRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\RenameSheetsIcon.png">
+      <Link>IconsDark\RenameSheetsIcon.png</Link>
+      <LogicalName>IconsDark.RenameSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ReverseTextIcon.png">
+      <Link>IconsDark\ReverseTextIcon.png</Link>
+      <LogicalName>IconsDark.ReverseTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\RoundValuesIcon.png">
+      <Link>IconsDark\RoundValuesIcon.png</Link>
+      <LogicalName>IconsDark.RoundValuesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectBlankCellsIcon.png">
+      <Link>IconsDark\SelectBlankCellsIcon.png</Link>
+      <LogicalName>IconsDark.SelectBlankCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectByColorIcon.png">
+      <Link>IconsDark\SelectByColorIcon.png</Link>
+      <LogicalName>IconsDark.SelectByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectByFontColorIcon.png">
+      <Link>IconsDark\SelectByFontColorIcon.png</Link>
+      <LogicalName>IconsDark.SelectByFontColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectByValueIcon.png">
+      <Link>IconsDark\SelectByValueIcon.png</Link>
+      <LogicalName>IconsDark.SelectByValueIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectDuplicatesIcon.png">
+      <Link>IconsDark\SelectDuplicatesIcon.png</Link>
+      <LogicalName>IconsDark.SelectDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectErrorCellsIcon.png">
+      <Link>IconsDark\SelectErrorCellsIcon.png</Link>
+      <LogicalName>IconsDark.SelectErrorCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectFirstCellIcon.png">
+      <Link>IconsDark\SelectFirstCellIcon.png</Link>
+      <LogicalName>IconsDark.SelectFirstCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectLastCellIcon.png">
+      <Link>IconsDark\SelectLastCellIcon.png</Link>
+      <LogicalName>IconsDark.SelectLastCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectMaxCellIcon.png">
+      <Link>IconsDark\SelectMaxCellIcon.png</Link>
+      <LogicalName>IconsDark.SelectMaxCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectMinCellIcon.png">
+      <Link>IconsDark\SelectMinCellIcon.png</Link>
+      <LogicalName>IconsDark.SelectMinCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectNonBlankCellsIcon.png">
+      <Link>IconsDark\SelectNonBlankCellsIcon.png</Link>
+      <LogicalName>IconsDark.SelectNonBlankCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SelectUniquesIcon.png">
+      <Link>IconsDark\SelectUniquesIcon.png</Link>
+      <LogicalName>IconsDark.SelectUniquesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SheetsToFilesIcon.png">
+      <Link>IconsDark\SheetsToFilesIcon.png</Link>
+      <LogicalName>IconsDark.SheetsToFilesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SheetTOCIcon.png">
+      <Link>IconsDark\SheetTOCIcon.png</Link>
+      <LogicalName>IconsDark.SheetTOCIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SortSheetsIcon.png">
+      <Link>IconsDark\SortSheetsIcon.png</Link>
+      <LogicalName>IconsDark.SortSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SplitByColumnIcon.png">
+      <Link>IconsDark\SplitByColumnIcon.png</Link>
+      <LogicalName>IconsDark.SplitByColumnIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SplitIntoRowsIcon.png">
+      <Link>IconsDark\SplitIntoRowsIcon.png</Link>
+      <LogicalName>IconsDark.SplitIntoRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SplitNamesIcon.png">
+      <Link>IconsDark\SplitNamesIcon.png</Link>
+      <LogicalName>IconsDark.SplitNamesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SumCountByColorIcon.png">
+      <Link>IconsDark\SumCountByColorIcon.png</Link>
+      <LogicalName>IconsDark.SumCountByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SuperSubscriptIcon.png">
+      <Link>IconsDark\SuperSubscriptIcon.png</Link>
+      <LogicalName>IconsDark.SuperSubscriptIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\SwapRangesIcon.png">
+      <Link>IconsDark\SwapRangesIcon.png</Link>
+      <LogicalName>IconsDark.SwapRangesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\ToggleRefStyleIcon.png">
+      <Link>IconsDark\ToggleRefStyleIcon.png</Link>
+      <LogicalName>IconsDark.ToggleRefStyleIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\TransposeRangeIcon.png">
+      <Link>IconsDark\TransposeRangeIcon.png</Link>
+      <LogicalName>IconsDark.TransposeRangeIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\TrimTextIcon.png">
+      <Link>IconsDark\TrimTextIcon.png</Link>
+      <LogicalName>IconsDark.TrimTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\UnhideAllSheetsIcon.png">
+      <Link>IconsDark\UnhideAllSheetsIcon.png</Link>
+      <LogicalName>IconsDark.UnhideAllSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\UnitConversionIcon.png">
+      <Link>IconsDark\UnitConversionIcon.png</Link>
+      <LogicalName>IconsDark.UnitConversionIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\UnmergeAndFillIcon.png">
+      <Link>IconsDark\UnmergeAndFillIcon.png</Link>
+      <LogicalName>IconsDark.UnmergeAndFillIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark\WrapIferrorIcon.png">
+      <Link>IconsDark\WrapIferrorIcon.png</Link>
+      <LogicalName>IconsDark.WrapIferrorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\AddBorderToEachPageIcon.png">
+      <Link>IconsDark16\AddBorderToEachPageIcon.png</Link>
+      <LogicalName>IconsDark16.AddBorderToEachPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\AddLeadingZerosIcon.png">
+      <Link>IconsDark16\AddLeadingZerosIcon.png</Link>
+      <LogicalName>IconsDark16.AddLeadingZerosIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\AddLineBreakIcon.png">
+      <Link>IconsDark16\AddLineBreakIcon.png</Link>
+      <LogicalName>IconsDark16.AddLineBreakIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\AddTextIcon.png">
+      <Link>IconsDark16\AddTextIcon.png</Link>
+      <LogicalName>IconsDark16.AddTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\AlternateRowsIcon.png">
+      <Link>IconsDark16\AlternateRowsIcon.png</Link>
+      <LogicalName>IconsDark16.AlternateRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\AutoFitAllIcon.png">
+      <Link>IconsDark16\AutoFitAllIcon.png</Link>
+      <LogicalName>IconsDark16.AutoFitAllIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\BatchRenameSheetsIcon.png">
+      <Link>IconsDark16\BatchRenameSheetsIcon.png</Link>
+      <LogicalName>IconsDark16.BatchRenameSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\CalculateAgeIcon.png">
+      <Link>IconsDark16\CalculateAgeIcon.png</Link>
+      <LogicalName>IconsDark16.CalculateAgeIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ChangeCaseIcon.png">
+      <Link>IconsDark16\ChangeCaseIcon.png</Link>
+      <LogicalName>IconsDark16.ChangeCaseIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ChangeSignIcon.png">
+      <Link>IconsDark16\ChangeSignIcon.png</Link>
+      <LogicalName>IconsDark16.ChangeSignIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ClearCondFormattingIcon.png">
+      <Link>IconsDark16\ClearCondFormattingIcon.png</Link>
+      <LogicalName>IconsDark16.ClearCondFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ClearFormattingIcon.png">
+      <Link>IconsDark16\ClearFormattingIcon.png</Link>
+      <LogicalName>IconsDark16.ClearFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ClearHyperlinksIcon.png">
+      <Link>IconsDark16\ClearHyperlinksIcon.png</Link>
+      <LogicalName>IconsDark16.ClearHyperlinksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ColorDuplicatesIcon.png">
+      <Link>IconsDark16\ColorDuplicatesIcon.png</Link>
+      <LogicalName>IconsDark16.ColorDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\CombineRowsIcon.png">
+      <Link>IconsDark16\CombineRowsIcon.png</Link>
+      <LogicalName>IconsDark16.CombineRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\CompareRangesIcon.png">
+      <Link>IconsDark16\CompareRangesIcon.png</Link>
+      <LogicalName>IconsDark16.CompareRangesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ConvertDateFormatIcon.png">
+      <Link>IconsDark16\ConvertDateFormatIcon.png</Link>
+      <LogicalName>IconsDark16.ConvertDateFormatIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ConvertNumbersToTextIcon.png">
+      <Link>IconsDark16\ConvertNumbersToTextIcon.png</Link>
+      <LogicalName>IconsDark16.ConvertNumbersToTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ConvertTextToNumbersIcon.png">
+      <Link>IconsDark16\ConvertTextToNumbersIcon.png</Link>
+      <LogicalName>IconsDark16.ConvertTextToNumbersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\CopyCellFormattingIcon.png">
+      <Link>IconsDark16\CopyCellFormattingIcon.png</Link>
+      <LogicalName>IconsDark16.CopyCellFormattingIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\CopyPageSetupIcon.png">
+      <Link>IconsDark16\CopyPageSetupIcon.png</Link>
+      <LogicalName>IconsDark16.CopyPageSetupIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\CopySheetsIcon.png">
+      <Link>IconsDark16\CopySheetsIcon.png</Link>
+      <LogicalName>IconsDark16.CopySheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\CopyVisibleCellsIcon.png">
+      <Link>IconsDark16\CopyVisibleCellsIcon.png</Link>
+      <LogicalName>IconsDark16.CopyVisibleCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\CountByColorIcon.png">
+      <Link>IconsDark16\CountByColorIcon.png</Link>
+      <LogicalName>IconsDark16.CountByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\CountWordsIcon.png">
+      <Link>IconsDark16\CountWordsIcon.png</Link>
+      <LogicalName>IconsDark16.CountWordsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\CurrencyFormatIcon.png">
+      <Link>IconsDark16\CurrencyFormatIcon.png</Link>
+      <LogicalName>IconsDark16.CurrencyFormatIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\DeleteBlankRowsIcon.png">
+      <Link>IconsDark16\DeleteBlankRowsIcon.png</Link>
+      <LogicalName>IconsDark16.DeleteBlankRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\DetectDataTypesIcon.png">
+      <Link>IconsDark16\DetectDataTypesIcon.png</Link>
+      <LogicalName>IconsDark16.DetectDataTypesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ExportRangeImageIcon.png">
+      <Link>IconsDark16\ExportRangeImageIcon.png</Link>
+      <LogicalName>IconsDark16.ExportRangeImageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ExportToCsvIcon.png">
+      <Link>IconsDark16\ExportToCsvIcon.png</Link>
+      <LogicalName>IconsDark16.ExportToCsvIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ExportToJsonIcon.png">
+      <Link>IconsDark16\ExportToJsonIcon.png</Link>
+      <LogicalName>IconsDark16.ExportToJsonIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ExportToPDFIcon.png">
+      <Link>IconsDark16\ExportToPDFIcon.png</Link>
+      <LogicalName>IconsDark16.ExportToPDFIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ExtractNumbersIcon.png">
+      <Link>IconsDark16\ExtractNumbersIcon.png</Link>
+      <LogicalName>IconsDark16.ExtractNumbersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ExtractTextIcon.png">
+      <Link>IconsDark16\ExtractTextIcon.png</Link>
+      <LogicalName>IconsDark16.ExtractTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\FillDownBlanksIcon.png">
+      <Link>IconsDark16\FillDownBlanksIcon.png</Link>
+      <LogicalName>IconsDark16.FillDownBlanksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\FindReplaceSheetsIcon.png">
+      <Link>IconsDark16\FindReplaceSheetsIcon.png</Link>
+      <LogicalName>IconsDark16.FindReplaceSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\FlipHorizontalIcon.png">
+      <Link>IconsDark16\FlipHorizontalIcon.png</Link>
+      <LogicalName>IconsDark16.FlipHorizontalIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\FlipVerticalIcon.png">
+      <Link>IconsDark16\FlipVerticalIcon.png</Link>
+      <LogicalName>IconsDark16.FlipVerticalIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\FormulasToValuesIcon.png">
+      <Link>IconsDark16\FormulasToValuesIcon.png</Link>
+      <LogicalName>IconsDark16.FormulasToValuesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\FreezePanesIcon.png">
+      <Link>IconsDark16\FreezePanesIcon.png</Link>
+      <LogicalName>IconsDark16.FreezePanesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\FuzzyDedupeIcon.png">
+      <Link>IconsDark16\FuzzyDedupeIcon.png</Link>
+      <LogicalName>IconsDark16.FuzzyDedupeIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\GridFocusIcon.png">
+      <Link>IconsDark16\GridFocusIcon.png</Link>
+      <LogicalName>IconsDark16.GridFocusIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\HighlightDuplicatesIcon.png">
+      <Link>IconsDark16\HighlightDuplicatesIcon.png</Link>
+      <LogicalName>IconsDark16.HighlightDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ImportFilenamesIcon.png">
+      <Link>IconsDark16\ImportFilenamesIcon.png</Link>
+      <LogicalName>IconsDark16.ImportFilenamesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\InsertBlankRowsIcon.png">
+      <Link>IconsDark16\InsertBlankRowsIcon.png</Link>
+      <LogicalName>IconsDark16.InsertBlankRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\InsertBulletsIcon.png">
+      <Link>IconsDark16\InsertBulletsIcon.png</Link>
+      <LogicalName>IconsDark16.InsertBulletsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\InsertDateSequenceIcon.png">
+      <Link>IconsDark16\InsertDateSequenceIcon.png</Link>
+      <LogicalName>IconsDark16.InsertDateSequenceIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\InsertFileListIcon.png">
+      <Link>IconsDark16\InsertFileListIcon.png</Link>
+      <LogicalName>IconsDark16.InsertFileListIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\InsertPageBreakEveryRowIcon.png">
+      <Link>IconsDark16\InsertPageBreakEveryRowIcon.png</Link>
+      <LogicalName>IconsDark16.InsertPageBreakEveryRowIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\InsertRandomDataIcon.png">
+      <Link>IconsDark16\InsertRandomDataIcon.png</Link>
+      <LogicalName>IconsDark16.InsertRandomDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\InsertSequenceIcon.png">
+      <Link>IconsDark16\InsertSequenceIcon.png</Link>
+      <LogicalName>IconsDark16.InsertSequenceIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\MergeCellsKeepDataIcon.png">
+      <Link>IconsDark16\MergeCellsKeepDataIcon.png</Link>
+      <LogicalName>IconsDark16.MergeCellsKeepDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\MergeWorkbooksIcon.png">
+      <Link>IconsDark16\MergeWorkbooksIcon.png</Link>
+      <LogicalName>IconsDark16.MergeWorkbooksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\NumbersToWordsIcon.png">
+      <Link>IconsDark16\NumbersToWordsIcon.png</Link>
+      <LogicalName>IconsDark16.NumbersToWordsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\PagingSubtotalsIcon.png">
+      <Link>IconsDark16\PagingSubtotalsIcon.png</Link>
+      <LogicalName>IconsDark16.PagingSubtotalsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\PrintChartsOnlyIcon.png">
+      <Link>IconsDark16\PrintChartsOnlyIcon.png</Link>
+      <LogicalName>IconsDark16.PrintChartsOnlyIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\PrintCircleInvalidDataIcon.png">
+      <Link>IconsDark16\PrintCircleInvalidDataIcon.png</Link>
+      <LogicalName>IconsDark16.PrintCircleInvalidDataIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\PrintCurrentPageIcon.png">
+      <Link>IconsDark16\PrintCurrentPageIcon.png</Link>
+      <LogicalName>IconsDark16.PrintCurrentPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\PrintFirstPageIcon.png">
+      <Link>IconsDark16\PrintFirstPageIcon.png</Link>
+      <LogicalName>IconsDark16.PrintFirstPageIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\PrintMultipleSelectionsIcon.png">
+      <Link>IconsDark16\PrintMultipleSelectionsIcon.png</Link>
+      <LogicalName>IconsDark16.PrintMultipleSelectionsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\PrintMultipleWorkbooksIcon.png">
+      <Link>IconsDark16\PrintMultipleWorkbooksIcon.png</Link>
+      <LogicalName>IconsDark16.PrintMultipleWorkbooksIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\PrintReverseOrderIcon.png">
+      <Link>IconsDark16\PrintReverseOrderIcon.png</Link>
+      <LogicalName>IconsDark16.PrintReverseOrderIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\PrintSpecifiedPagesIcon.png">
+      <Link>IconsDark16\PrintSpecifiedPagesIcon.png</Link>
+      <LogicalName>IconsDark16.PrintSpecifiedPagesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ProperCaseIcon.png">
+      <Link>IconsDark16\ProperCaseIcon.png</Link>
+      <LogicalName>IconsDark16.ProperCaseIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\RefreshPivotsIcon.png">
+      <Link>IconsDark16\RefreshPivotsIcon.png</Link>
+      <LogicalName>IconsDark16.RefreshPivotsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\RemoveApostrophesIcon.png">
+      <Link>IconsDark16\RemoveApostrophesIcon.png</Link>
+      <LogicalName>IconsDark16.RemoveApostrophesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\RemoveCharactersIcon.png">
+      <Link>IconsDark16\RemoveCharactersIcon.png</Link>
+      <LogicalName>IconsDark16.RemoveCharactersIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\RemoveDuplicateRowsIcon.png">
+      <Link>IconsDark16\RemoveDuplicateRowsIcon.png</Link>
+      <LogicalName>IconsDark16.RemoveDuplicateRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\RenameSheetsIcon.png">
+      <Link>IconsDark16\RenameSheetsIcon.png</Link>
+      <LogicalName>IconsDark16.RenameSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ReverseTextIcon.png">
+      <Link>IconsDark16\ReverseTextIcon.png</Link>
+      <LogicalName>IconsDark16.ReverseTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\RoundValuesIcon.png">
+      <Link>IconsDark16\RoundValuesIcon.png</Link>
+      <LogicalName>IconsDark16.RoundValuesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectBlankCellsIcon.png">
+      <Link>IconsDark16\SelectBlankCellsIcon.png</Link>
+      <LogicalName>IconsDark16.SelectBlankCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectByColorIcon.png">
+      <Link>IconsDark16\SelectByColorIcon.png</Link>
+      <LogicalName>IconsDark16.SelectByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectByFontColorIcon.png">
+      <Link>IconsDark16\SelectByFontColorIcon.png</Link>
+      <LogicalName>IconsDark16.SelectByFontColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectByValueIcon.png">
+      <Link>IconsDark16\SelectByValueIcon.png</Link>
+      <LogicalName>IconsDark16.SelectByValueIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectDuplicatesIcon.png">
+      <Link>IconsDark16\SelectDuplicatesIcon.png</Link>
+      <LogicalName>IconsDark16.SelectDuplicatesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectErrorCellsIcon.png">
+      <Link>IconsDark16\SelectErrorCellsIcon.png</Link>
+      <LogicalName>IconsDark16.SelectErrorCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectFirstCellIcon.png">
+      <Link>IconsDark16\SelectFirstCellIcon.png</Link>
+      <LogicalName>IconsDark16.SelectFirstCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectLastCellIcon.png">
+      <Link>IconsDark16\SelectLastCellIcon.png</Link>
+      <LogicalName>IconsDark16.SelectLastCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectMaxCellIcon.png">
+      <Link>IconsDark16\SelectMaxCellIcon.png</Link>
+      <LogicalName>IconsDark16.SelectMaxCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectMinCellIcon.png">
+      <Link>IconsDark16\SelectMinCellIcon.png</Link>
+      <LogicalName>IconsDark16.SelectMinCellIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectNonBlankCellsIcon.png">
+      <Link>IconsDark16\SelectNonBlankCellsIcon.png</Link>
+      <LogicalName>IconsDark16.SelectNonBlankCellsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SelectUniquesIcon.png">
+      <Link>IconsDark16\SelectUniquesIcon.png</Link>
+      <LogicalName>IconsDark16.SelectUniquesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SheetsToFilesIcon.png">
+      <Link>IconsDark16\SheetsToFilesIcon.png</Link>
+      <LogicalName>IconsDark16.SheetsToFilesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SheetTOCIcon.png">
+      <Link>IconsDark16\SheetTOCIcon.png</Link>
+      <LogicalName>IconsDark16.SheetTOCIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SortSheetsIcon.png">
+      <Link>IconsDark16\SortSheetsIcon.png</Link>
+      <LogicalName>IconsDark16.SortSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SplitByColumnIcon.png">
+      <Link>IconsDark16\SplitByColumnIcon.png</Link>
+      <LogicalName>IconsDark16.SplitByColumnIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SplitIntoRowsIcon.png">
+      <Link>IconsDark16\SplitIntoRowsIcon.png</Link>
+      <LogicalName>IconsDark16.SplitIntoRowsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SplitNamesIcon.png">
+      <Link>IconsDark16\SplitNamesIcon.png</Link>
+      <LogicalName>IconsDark16.SplitNamesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SumCountByColorIcon.png">
+      <Link>IconsDark16\SumCountByColorIcon.png</Link>
+      <LogicalName>IconsDark16.SumCountByColorIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SuperSubscriptIcon.png">
+      <Link>IconsDark16\SuperSubscriptIcon.png</Link>
+      <LogicalName>IconsDark16.SuperSubscriptIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\SwapRangesIcon.png">
+      <Link>IconsDark16\SwapRangesIcon.png</Link>
+      <LogicalName>IconsDark16.SwapRangesIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\ToggleRefStyleIcon.png">
+      <Link>IconsDark16\ToggleRefStyleIcon.png</Link>
+      <LogicalName>IconsDark16.ToggleRefStyleIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\TransposeRangeIcon.png">
+      <Link>IconsDark16\TransposeRangeIcon.png</Link>
+      <LogicalName>IconsDark16.TransposeRangeIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\TrimTextIcon.png">
+      <Link>IconsDark16\TrimTextIcon.png</Link>
+      <LogicalName>IconsDark16.TrimTextIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\UnhideAllSheetsIcon.png">
+      <Link>IconsDark16\UnhideAllSheetsIcon.png</Link>
+      <LogicalName>IconsDark16.UnhideAllSheetsIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\UnitConversionIcon.png">
+      <Link>IconsDark16\UnitConversionIcon.png</Link>
+      <LogicalName>IconsDark16.UnitConversionIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\UnmergeAndFillIcon.png">
+      <Link>IconsDark16\UnmergeAndFillIcon.png</Link>
+      <LogicalName>IconsDark16.UnmergeAndFillIcon.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\icon-dark-16\WrapIferrorIcon.png">
+      <Link>IconsDark16\WrapIferrorIcon.png</Link>
+      <LogicalName>IconsDark16.WrapIferrorIcon.png</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

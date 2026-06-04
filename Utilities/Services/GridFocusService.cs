@@ -17,7 +17,7 @@ namespace utilities.Services
         public int            Transparency      { get; set; } = 70; // percent 0-100
         public bool           HighlightActiveArea  { get; set; } = false;
         public bool           HighlightOnEditing   { get; set; } = false;
-        public bool           Enabled           { get; set; } = true;
+        public bool           Enabled           { get; set; } = false;
     }
 
     /// <summary>
@@ -53,6 +53,12 @@ namespace utilities.Services
             }
             catch { /* never crash Excel's selection change pipeline */ }
         }
+
+        /// <summary>
+        /// Drop the cached sheet reference. Call when a workbook closes so the COM
+        /// wrapper is not held past the workbook's lifetime.
+        /// </summary>
+        public static void ClearLastSheet() { _lastSheet = null; }
 
         /// <summary>Remove all Grid Focus shapes from every sheet in the workbook.</summary>
         public static void ClearAll(Excel.Application app)

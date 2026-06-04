@@ -16,7 +16,7 @@ namespace utilities.Commands.Tools
             Screentip = "Activate License",
             Supertip = "Enter a product key to unlock the full Excel Utilities Suite.",
             ImageMso = "Permissions",
-            Tab = "Suite", Group = "License", Order = 10,
+            Tab = null, Group = "License", Order = 10,
             RequiresSelection = false, UndoMode = UndoMode.None
         };
         public override CommandDefinition Definition { get { return Def; } }
@@ -32,7 +32,7 @@ namespace utilities.Commands.Tools
             Screentip = "Deactivate License",
             Supertip = "Remove the stored product key from this computer.",
             ImageMso = "Delete",
-            Tab = "Suite", Group = "License", Order = 20,
+            Tab = null, Group = "License", Order = 20,
             RequiresSelection = false, UndoMode = UndoMode.None
         };
         public override CommandDefinition Definition { get { return Def; } }

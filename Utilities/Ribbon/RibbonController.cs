@@ -125,13 +125,27 @@ namespace utilities.Ribbon
 
         // ---- System control handlers ----
 
+        public bool GetLicenseVisible(IRibbonControl control)
+        {
+            return License.Current.State != LicenseState.Licensed;
+        }
+
         private void ShowAbout()
         {
+            var svc = License.Current;
+            var sb = new StringBuilder();
+            sb.AppendLine("Excel Utilities Suite");
+            sb.AppendLine(CommandRegistry.Count + " tools installed.");
+            sb.AppendLine();
+            sb.AppendLine("─── License ───────────────────────");
+            sb.AppendLine("Status:     " + svc.StatusText);
+            if (svc.State == LicenseState.Licensed || svc.State == LicenseState.Offline)
+            {
+                sb.AppendLine("Machine ID: " + RealLicenseService.MachineId());
+            }
             System.Windows.Forms.MessageBox.Show(
-                "Excel Utilities Suite\n\n" +
-                CommandRegistry.Count + " tools installed.\n" +
-                "License: " + License.Current.StatusText,
-                "About",
+                sb.ToString(),
+                "About Excel Utilities Suite",
                 System.Windows.Forms.MessageBoxButtons.OK,
                 System.Windows.Forms.MessageBoxIcon.Information);
         }

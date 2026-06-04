@@ -101,6 +101,21 @@ namespace utilities.Commands
         /// <summary>True to render as a large (32px) ribbon button, false for a small (16px) one.</summary>
         public bool LargeButton { get; set; }
 
+        /// <summary>
+        /// When set, this button is placed inside a dropdown &lt;menu&gt; with this label rather
+        /// than appearing directly in the ribbon group.
+        /// </summary>
+        public string MenuParent { get; set; }
+
+        /// <summary>Office imageMso shown on the parent menu dropdown button (only used when MenuParent is set).</summary>
+        public string MenuParentImageMso { get; set; }
+
+        /// <summary>
+        /// Sort order of the parent menu container within its ribbon group.
+        /// When 0, falls back to the minimum Order of the menu's child commands.
+        /// </summary>
+        public int MenuParentOrder { get; set; }
+
         public CommandDefinition()
         {
             Scope = CommandScope.Selection;

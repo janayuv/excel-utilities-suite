@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace utilities.Services
 {
@@ -7,6 +8,12 @@ namespace utilities.Services
     /// Intercepts Ctrl+Z at the OS level. When the add-in undo stack is non-empty the
     /// key is consumed and <see cref="Install"/>'s callback fires; otherwise the key
     /// falls through to Excel's native undo unchanged.
+    ///
+    /// SAFETY RULE: the hook callback must return in &lt;200 ms or Windows kills it and
+    /// can crash the host process. Therefore the callback does nothing but a pure
+    /// in-memory check (<see cref="UndoService.CanUndo"/>), then posts the actual undo
+    /// work to the UI thread via <see cref="SynchronizationContext"/> so all COM calls
+    /// happen outside the hook dispatch window.
     /// </summary>
     internal static class KeyboardHook
     {
@@ -44,15 +51,21 @@ namespace utilities.Services
         [DllImport("user32.dll")]
         private static extern short GetKeyState(int nVirtKey);
 
-        private static IntPtr               _hookId = IntPtr.Zero;
-        private static LowLevelKeyboardProc _proc;   // keep delegate alive — prevents GC collection
-        private static Action               _onCtrlZ;
+        private static IntPtr                _hookId = IntPtr.Zero;
+        private static LowLevelKeyboardProc  _proc;         // keep delegate alive — prevents GC collection
+        private static Action                _onCtrlZ;
+        private static SynchronizationContext _syncContext; // captured on UI thread at Install time
 
         public static void Install(Action onCtrlZ)
         {
             if (_hookId != IntPtr.Zero) return;
-            _onCtrlZ = onCtrlZ;
-            _proc    = HookCallback;
+
+            // Capture the UI-thread SynchronizationContext BEFORE installing the hook.
+            // All COM calls will be posted back here, outside the hook callback window.
+            _syncContext = SynchronizationContext.Current;
+            _onCtrlZ     = onCtrlZ;
+            _proc        = HookCallback;
+
             using (var proc   = System.Diagnostics.Process.GetCurrentProcess())
             using (var module = proc.MainModule)
             {
@@ -75,20 +88,26 @@ namespace utilities.Services
 
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
+            // CRITICAL: no I/O, no COM, no blocking calls here.
+            // This callback runs inside Windows' input hook dispatch — any delay or
+            // re-entrant COM call can deadlock or crash Excel within ~200 ms.
             if (nCode >= 0 &&
                 ((int)wParam == WM_KEYDOWN || (int)wParam == WM_SYSKEYDOWN))
             {
                 var kb = (KBDLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(KBDLLHOOKSTRUCT));
-                bool isCtrlZ = kb.vkCode == VK_Z && (GetKeyState(VK_CONTROL) & 0x8000) != 0;
 
-                if (isCtrlZ)
+                if (kb.vkCode == VK_Z && (GetKeyState(VK_CONTROL) & 0x8000) != 0
+                    && UndoService.CanUndo)   // pure in-memory check — safe inside hook
                 {
-                    ErrorService.Log("INFO", "KeyboardHook: Ctrl+Z detected. CanUndo=" + UndoService.CanUndo);
-                    if (UndoService.CanUndo)
+                    // Post the undo to the UI message loop so COM calls happen
+                    // after this hook callback has already returned to Windows.
+                    _syncContext?.Post(_ =>
                     {
-                        try { _onCtrlZ?.Invoke(); } catch (Exception ex) { ErrorService.Log("WARN", "KeyboardHook undo failed: " + ex.Message); }
-                        return (IntPtr)1; // consumed — do not pass to Excel
-                    }
+                        try { _onCtrlZ?.Invoke(); }
+                        catch (Exception ex) { ErrorService.Log("WARN", "KeyboardHook undo failed: " + ex.Message); }
+                    }, null);
+
+                    return (IntPtr)1; // consumed — do not pass to Excel
                 }
             }
             return CallNextHookEx(_hookId, nCode, wParam, lParam);

@@ -34,113 +34,33 @@ namespace utilities.Ribbon
             { "Printing",              "Utilities +" },
         };
 
-        // Fallback imageMso for tools that have no custom PNG embedded resource.
-        // All values verified against the Office 2010+ imageMso gallery.
-        // The 7 ImageIds with real embedded PNGs are intentionally absent —
-        // those continue to use getImage/IconProvider.
-        private static readonly Dictionary<string, string> ImageIdToMso = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        // imageMso for each ribbon group — used when Office collapses the group into a single button.
+        private static readonly Dictionary<string, string> GroupImageMso = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
         {
-            // ── Color ─────────────────────────────────────────────────────────
-            { "SelectByColor",           "SelectCurrentRegion" },
-            { "SumCountByColor",         "AutoSum" },
-            { "CountByColor",            "AutoSum" },
-            // ── Format & Convert ──────────────────────────────────────────────
-            { "ClearFormatting",         "ClearFormats" },
-            { "FormulasToValues",        "PasteValues" },
-            { "RoundValues",             "DecimalDecrease" },
-            { "ChangeSign",              "NumberFormatDialog" },
-            { "NumbersToWords",          "Spelling" },
-            { "CopyCellFormatting",      "FormatPainter" },
-            { "AlternateRows",           "FormatCellsDialog" },
-            { "ConvertDateFormat",       "FunctionWizard" },
-            { "SwapRanges",              "Cut" },
-            { "CurrencyFormat",          "NumberFormatDialog" },
-            { "UnitConversion",          "NumberFormatDialog" },
-            // ── Data ──────────────────────────────────────────────────────────
-            { "RemoveDuplicateRows",     "RemoveDuplicates" },
-            { "WrapIferror",             "FormulaErrorChecking" },
-            { "ToggleRefStyle",          "FormulaBar" },
-            { "SplitIntoRows",           "TextToColumns" },
-            { "DetectDataTypes",         "DataValidation" },
-            { "FuzzyDedupe",             "RemoveDuplicates" },
-            { "CalculateAge",            "FunctionWizard" },
-            { "UnmergeAndFill",          "UnMergeCell" },
-            { "CompareRanges",           "GoToSpecial" },
-            { "MergeCellsKeepData",      "MergeCenter" },
-            { "HighlightDuplicates",     "ConditionalFormattingHighlightCellsRulesMenu" },
-            { "ClearCondFormatting",     "ConditionalFormattingClearRulesMenu" },
-            // ── Insert / Fill ─────────────────────────────────────────────────
-            { "FillDownBlanks",          "FillDown" },
-            { "TransposeRange",          "PasteSpecial" },
-            { "CombineRows",             "MergeCenter" },
-            { "InsertRandomData",        "FunctionWizard" },
-            { "InsertBullets",           "InsertTextBox" },
-            { "InsertDateSequence",      "FillDown" },
-            { "InsertBlankRows",         "InsertRows" },
-            // ── Range / Select ────────────────────────────────────────────────
-            { "DeleteBlankRows",         "DeleteRows" },
-            { "SelectBlankCells",        "GoToSpecial" },
-            { "SelectNonBlankCells",     "GoToSpecial" },
-            { "SelectErrorCells",        "FormulaErrorChecking" },
-            { "SelectDuplicates",        "RemoveDuplicates" },
-            { "SelectUniques",           "ConditionalFormattingHighlightCellsRulesMenu" },
-            { "SelectByValue",           "AutoFilter" },
-            { "SelectByFontColor",       "FontColor" },
-            { "SelectMaxCell",           "ConditionalFormattingTopBottomRulesMenu" },
-            { "SelectMinCell",           "ConditionalFormattingTopBottomRulesMenu" },
-            { "CopyVisibleCells",        "Copy" },
-            { "SelectFirstCell",         "GoToSpecial" },
-            { "SelectLastCell",          "GoToSpecial" },
-            // ── Text ──────────────────────────────────────────────────────────
-            { "AddText",                 "InsertTextBox" },
-            { "RemoveCharacters",        "ClearContents" },
-            { "ReverseText",             "SortDescendingA" },
-            { "ExtractNumbers",          "NumberFormatDialog" },
-            { "ExtractText",             "FindAndReplace" },
-            { "SplitNames",              "TextToColumns" },
-            { "CountWords",              "Spelling" },
-            { "AddLeadingZeros",         "NumberFormatDialog" },
-            { "RemoveApostrophes",       "ClearContents" },
-            { "ProperCase",              "Bold" },
-            { "AddLineBreak",            "WrapText" },
-            { "SuperSubscript",          "Subscript" },
-            // ── Find / Navigate / Sheet ───────────────────────────────────────
-            { "FindReplaceSheets",       "FindAndReplace" },
-            { "FlipVertical",            "RotateLeft90" },
-            { "FlipHorizontal",          "RotateRight90" },
-            { "SheetTOC",                "InsertHyperlink" },
-            { "SortSheets",              "SortAscendingA" },
-            { "RenameSheets",            "NameManager" },
-            { "SheetsToFiles",           "SaveAs" },
-            { "UnhideAllSheets",         "GroupShowDetail" },
-            { "BatchRenameSheets",       "NameManager" },
-            { "RefreshPivots",           "RefreshAll" },
-            { "ClearHyperlinks",         "HyperlinkRemove" },
-            { "AutoFitAll",              "ColumnWidthAutoFit" },
-            { "FreezePanes",             "FreezePanes" },
-            // ── Export / Import / Workbook ────────────────────────────────────
-            { "ExportToCsv",             "SaveAs" },
-            { "ExportToJson",            "SaveAs" },
-            { "InsertFileList",          "InsertHyperlink" },
-            { "ImportFilenames",         "FileOpen" },
-            { "CopySheets",              "Copy" },
-            { "MergeWorkbooks",          "SaveAs" },
-            { "SplitByColumn",           "TextToColumns" },
-            { "ExportRangeImage",        "FileOpen" },
-            // ── Printing ──────────────────────────────────────────────────────
-            { "PrintMultipleWorkbooks",  "FilePrint" },
-            { "PrintMultipleSelections", "PrintPreviewAndPrint" },
-            { "PrintFirstPage",          "FilePrint" },
-            { "PrintReverseOrder",       "SortDescendingA" },
-            { "PrintCurrentPage",        "FilePrint" },
-            { "PrintSpecifiedPages",     "FilePrint" },
-            { "PrintCircleInvalidData",  "DataValidation" },
-            { "PrintChartsOnly",         "ChartInsert" },
-            { "CopyPageSetup",           "PageSetup" },
-            { "PagingSubtotals",         "Subtotal" },
-            { "InsertPageBreakEveryRow", "PageBreakInsertExcel" },
-            { "AddBorderToEachPage",     "OutsideBorders" },
+            { "View",              "ViewGridlines" },
+            { "Format & Convert",  "ClearFormats" },
+            { "Text",              "Bold" },
+            { "Select",            "GoToSpecial" },
+            { "Navigate",          "GoTo" },
+            { "Insert",            "InsertFunction" },
+            { "Range & Cells",     "ColumnWidthAutoFit" },
+            { "Statistics",        "AutoSum" },
+            { "Formulas",          "FunctionWizard" },
+            { "Duplicates",        "RemoveDuplicates" },
+            { "Merge",             "MergeCenter" },
+            { "Combine",           "GroupRows" },
+            { "Split",             "TextToColumns" },
+            { "Export",            "SaveAs" },
+            { "Import",            "FileOpen" },
+            { "Sheets",            "InsertWorksheet" },
+            { "Workbook",          "OpenDocumentExcelWorkbook" },
+            { "Printing",          "FilePrint" },
+            { "Quality",           "DataValidation" },
         };
+
+        // All tool buttons now use getImage="GetImage" → IconProvider → custom embedded PNGs.
+        // imageMso is only used for system controls (Undo, About, Open Log) and
+        // collapsed-group icons (GroupImageMso above).
 
         public static string Build()
         {
@@ -186,21 +106,81 @@ namespace utilities.Ribbon
 
             foreach (var group in groups)
             {
+                string grpMso;
+                GroupImageMso.TryGetValue(group.Key, out grpMso);
                 sb.Append("<group id=\"").Append(SafeId("grp", tab + "_" + group.Key))
-                  .Append("\" label=\"").Append(Esc(group.Key)).Append("\">");
+                  .Append("\" label=\"").Append(Esc(group.Key)).Append("\"");
+                if (!string.IsNullOrEmpty(grpMso))
+                    sb.Append(" imageMso=\"").Append(Esc(grpMso)).Append("\"");
+                sb.Append(">");
 
-                foreach (CommandDefinition d in group.OrderBy(x => x.Order).ThenBy(x => x.Label, StringComparer.OrdinalIgnoreCase))
+                // Separate standalone buttons from commands that live inside a <menu> dropdown.
+                var standalone = group.Where(d => string.IsNullOrEmpty(d.MenuParent)).ToList();
+                var menuGroups = group.Where(d => !string.IsNullOrEmpty(d.MenuParent))
+                                      .GroupBy(d => d.MenuParent).ToList();
+
+                // Build ordered (effectiveOrder, renderAction) list so menus and buttons share one ordering pass.
+                var items = new List<System.Tuple<int, Action>>();
+                foreach (var d in standalone)
                 {
-                    AppendButton(sb, d);
+                    var captured = d;
+                    items.Add(System.Tuple.Create(d.Order, (Action)(() => AppendButton(sb, captured))));
                 }
+                foreach (var mg in menuGroups)
+                {
+                    var children = mg.OrderBy(d => d.Order).ThenBy(d => d.Label, StringComparer.OrdinalIgnoreCase).ToList();
+                    int menuOrder = children.Any(d => d.MenuParentOrder > 0)
+                        ? children.Where(d => d.MenuParentOrder > 0).Min(d => d.MenuParentOrder)
+                        : children.Min(d => d.Order);
+                    string parentLabel = mg.Key;
+                    string parentMso   = children.Select(d => d.MenuParentImageMso).FirstOrDefault(s => !string.IsNullOrEmpty(s));
+                    var capturedChildren = children;
+                    items.Add(System.Tuple.Create(menuOrder,
+                        (Action)(() => AppendMenuButton(sb, tab + "_" + group.Key + "_" + parentLabel, parentLabel, parentMso, capturedChildren))));
+                }
+
+                foreach (var item in items.OrderBy(x => x.Item1))
+                    item.Item2();
+
                 sb.Append("</group>");
             }
             sb.Append("</tab>");
         }
 
+        private static void AppendMenuButton(StringBuilder sb, string idBase, string label, string imageMso, List<CommandDefinition> children)
+        {
+            sb.Append("<menu id=\"").Append(SafeId("menu", idBase)).Append("\"");
+            sb.Append(" label=\"").Append(Esc(label)).Append("\"");
+            if (!string.IsNullOrEmpty(imageMso))
+                sb.Append(" imageMso=\"").Append(Esc(imageMso)).Append("\"");
+            sb.Append(" size=\"large\">");
+            foreach (var child in children)
+            {
+                sb.Append("<button id=\"").Append(SafeId("mitem", child.Id)).Append("\"")
+                  .Append(" tag=\"").Append(Esc(child.Id)).Append("\"")
+                  .Append(" getLabel=\"GetLabel\" onAction=\"OnAction\"")
+                  .Append(" getScreentip=\"GetScreentip\" getSupertip=\"GetSupertip\"")
+                  .Append(" getEnabled=\"GetEnabled\"");
+                if (!string.IsNullOrEmpty(child.ImageMso))
+                    sb.Append(" imageMso=\"").Append(Esc(child.ImageMso)).Append("\"");
+                else if (!string.IsNullOrEmpty(child.ImageId))
+                    sb.Append(" getImage=\"GetImage\"");
+                sb.Append("/>");
+            }
+            sb.Append("</menu>");
+        }
+
         private static void AppendSuiteTab(StringBuilder sb)
         {
             sb.Append("<tab id=\"tab_suite\" label=\"Suite\">");
+
+            // License group — hidden automatically once a valid key is stored.
+            sb.Append("<group id=\"grp_license\" label=\"License\" getVisible=\"GetLicenseVisible\">");
+            sb.Append("<button id=\"btn_Suite_ActivateLicense\" tag=\"Suite.ActivateLicense\"");
+            sb.Append(" label=\"Activate License\" onAction=\"OnAction\" imageMso=\"Permissions\" size=\"normal\"/>");
+            sb.Append("<button id=\"btn_Suite_DeactivateLicense\" tag=\"Suite.DeactivateLicense\"");
+            sb.Append(" label=\"Deactivate\" onAction=\"OnAction\" imageMso=\"Delete\" size=\"normal\"/>");
+            sb.Append("</group>");
 
             sb.Append("<group id=\"grp_history\" label=\"History\">");
             AppendDynamicButton(sb, RibbonController.SysUndoTag, true);
@@ -216,25 +196,15 @@ namespace utilities.Ribbon
 
         private static void AppendButton(StringBuilder sb, CommandDefinition def)
         {
-            // Resolve the icon: explicit ImageMso on the def wins; then check the
-            // fallback table; finally fall back to the getImage/IconProvider path
-            // (used by the 7 tools that have embedded custom PNGs).
-            string mso = def.ImageMso;
-            if (string.IsNullOrEmpty(mso) && !string.IsNullOrEmpty(def.ImageId))
-                ImageIdToMso.TryGetValue(def.ImageId, out mso);
-
+            // All tool buttons use custom embedded PNGs via getImage="GetImage".
+            // IconProvider selects light or dark icon automatically based on the Office theme.
             sb.Append("<button id=\"").Append(SafeId("btn", def.Id)).Append("\"")
               .Append(" tag=\"").Append(Esc(def.Id)).Append("\"")
               .Append(" getLabel=\"GetLabel\" onAction=\"OnAction\"")
               .Append(" getScreentip=\"GetScreentip\" getSupertip=\"GetSupertip\"")
-              .Append(" getEnabled=\"GetEnabled\"");
-
-            if (!string.IsNullOrEmpty(mso))
-                sb.Append(" imageMso=\"").Append(Esc(mso)).Append("\"");
-            else
-                sb.Append(" getImage=\"GetImage\"");
-
-            sb.Append(" size=\"").Append(def.LargeButton ? "large" : "normal").Append("\"/>");
+              .Append(" getEnabled=\"GetEnabled\"")
+              .Append(" getImage=\"GetImage\"")
+              .Append(" size=\"").Append(def.LargeButton ? "large" : "normal").Append("\"/>");
         }
 
         private static void AppendDynamicButton(StringBuilder sb, string tag, bool large)

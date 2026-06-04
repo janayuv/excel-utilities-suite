@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -130,63 +131,300 @@ namespace utilities.Commands.Tools
 
     internal sealed class FindReplaceAllSheetsDialog : Dialogs.DialogBase
     {
-        private readonly TextBox _find = new TextBox();
-        private readonly TextBox _replace = new TextBox();
-        private readonly CheckBox _matchCase = new CheckBox { Text = "Match case" };
+        // ── Controls ────────────────────────────────────────────────────────
+        private readonly TextBox     _find      = new TextBox();
+        private readonly TextBox     _replace   = new TextBox();
+        private readonly RadioButton _scopeAll  = new RadioButton { Text = "All worksheets",    Checked = true };
+        private readonly RadioButton _scopeCur  = new RadioButton { Text = "Current worksheet" };
+        private RadioButton          _scopeRng;
+        private readonly ComboBox    _search    = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
+        private readonly ComboBox    _lookIn    = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
+        private readonly CheckBox    _matchCase = new CheckBox { Text = "Match Case" };
+        private readonly CheckBox    _matchAll  = new CheckBox { Text = "Match entire cell contents" };
+        private readonly CheckBox    _matchWord = new CheckBox { Text = "Match whole word or phrase only", Checked = true };
+        private readonly Button      _btnFindAll  = new Button { Text = "&Find all" };
+        private readonly Button      _btnClose    = new Button { Text = "&Close",  DialogResult = DialogResult.Cancel };
+        private readonly Button      _btnReplace  = new Button { Text = "&Replace" };
+        private readonly Button      _btnReplAll  = new Button { Text = "Replace &All" };
+        private readonly Button      _btnFold     = new Button { Text = "Fold out >>" };
+        private readonly Label       _lblResults  = new Label  { Text = "Results found: 0", AutoSize = true };
+        private readonly ListView    _grid        = new ListView
+        {
+            View = View.Details, FullRowSelect = true, GridLines = true,
+            HideSelection = false, BorderStyle = BorderStyle.FixedSingle
+        };
+        private readonly Panel       _resultsPanel = new Panel { Visible = false };
+
+        private const int CollapsedH = 238;
+        private const int ExpandedH  = 465;
+        private bool _folded = true;
+        private List<FindMatch> _matches = new List<FindMatch>();
 
         public FindReplaceAllSheetsDialog()
         {
             Text = FindReplaceAcrossSheetsCommand.Def.Label;
-            ClientSize = new Size(360, 148);
+            ClientSize = new Size(660, CollapsedH);
 
-            var lblF = new Label { Text = "Find:", Left = 12, Top = 18, AutoSize = true };
-            _find.SetBounds(70, 15, 270, 23);
-            var lblR = new Label { Text = "Replace:", Left = 12, Top = 50, AutoSize = true };
-            _replace.SetBounds(70, 47, 270, 23);
-            _matchCase.SetBounds(70, 78, 180, 22);
+            // Instruction text
+            var lblHint = new Label
+            {
+                Text = "You can use ? (any single character) and * (any sequence).  " +
+                       "Special codes:  {lf} = line feed  |  {cr} = carriage return  |  {tab} = tab",
+                Left = 12, Top = 8, Width = 636, Height = 30, AutoSize = false
+            };
 
-            var apply = new Button { Text = "&Replace All", Left = 160, Top = 108, Width = 100 };
-            var cancel = new Button { Text = "&Cancel", Left = 266, Top = 108, Width = 80, DialogResult = DialogResult.Cancel };
-            apply.Click += OnReplace;
+            // Find / Replace
+            var lblF = new Label { Text = "Find what:",    Left = 12, Top = 48, AutoSize = true };
+            var lblR = new Label { Text = "Replace with:", Left = 12, Top = 76, AutoSize = true };
+            _find.SetBounds(110, 45, 400, 23);
+            _replace.SetBounds(110, 73, 400, 23);
 
-            Controls.AddRange(new Control[] { lblF, _find, lblR, _replace, _matchCase, apply, cancel });
-            WireButtons(apply, cancel);
+            // Scope group box
+            var gbScope = new GroupBox { Text = "Find/replace in:", Left = 12, Top = 106, Width = 206, Height = 100 };
+            string selAddr = GetSelectionAddress();
+            _scopeRng = new RadioButton { Text = "Range (" + selAddr + ")" };
+            _scopeAll.SetBounds(6, 18, 195, 20);
+            _scopeCur.SetBounds(6, 40, 195, 20);
+            _scopeRng.SetBounds(6, 62, 195, 20);
+            gbScope.Controls.AddRange(new Control[] { _scopeAll, _scopeCur, _scopeRng });
+
+            // Options group box
+            var gbOpts = new GroupBox { Text = "Options", Left = 228, Top = 106, Width = 424, Height = 100 };
+            var lblSrc = new Label { Text = "Search:",  Left = 8, Top = 20, AutoSize = true };
+            var lblLkn = new Label { Text = "Look in:", Left = 8, Top = 46, AutoSize = true };
+            _search.Items.AddRange(new object[] { "By Rows", "By Columns" });
+            _search.SelectedIndex = 0;
+            _search.SetBounds(72, 17, 120, 23);
+            _lookIn.Items.AddRange(new object[] { "Formulas", "Values" });
+            _lookIn.SelectedIndex = 0;
+            _lookIn.SetBounds(72, 43, 120, 23);
+            _matchCase.SetBounds(8,  72, 200, 20);
+            _matchWord.SetBounds(210, 17, 200, 20);
+            _matchAll.SetBounds( 210, 39, 200, 20);
+            gbOpts.Controls.AddRange(new Control[] { lblSrc, _search, lblLkn, _lookIn, _matchCase, _matchWord, _matchAll });
+
+            // Button row
+            int bTop = 176;
+            _btnFindAll.SetBounds(12,  bTop, 88, 28);
+            _btnClose.SetBounds(  106, bTop, 78, 28);
+            _btnReplace.SetBounds(190, bTop, 80, 28);
+            _btnReplAll.SetBounds(276, bTop, 90, 28);
+            _btnFold.SetBounds(   560, bTop, 90, 28);
+
+            _btnFindAll.Click += (s, e) => DoFindAll();
+            _btnReplace.Click += (s, e) => DoReplaceSelected();
+            _btnReplAll.Click += (s, e) => DoReplaceAll();
+            _btnFold.Click    += (s, e) => ToggleFold();
+
+            // Results panel (hidden until folded out)
+            _resultsPanel.SetBounds(0, CollapsedH, 660, ExpandedH - CollapsedH);
+            _lblResults.SetBounds(12, 8, 400, 20);
+            _grid.SetBounds(12, 30, 636, ExpandedH - CollapsedH - 45);
+            _grid.Columns.Add("Sheet",     100);
+            _grid.Columns.Add("Cell",       60);
+            _grid.Columns.Add("Value",     115);
+            _grid.Columns.Add("Formula",   115);
+            _grid.Columns.Add("Text",       95);
+            _grid.Columns.Add("New Value", 110);
+            _resultsPanel.Controls.AddRange(new Control[] { _lblResults, _grid });
+
+            Controls.AddRange(new Control[] {
+                lblHint, lblF, _find, lblR, _replace,
+                gbScope, gbOpts,
+                _btnFindAll, _btnClose, _btnReplace, _btnReplAll, _btnFold,
+                _resultsPanel
+            });
+            WireButtons(_btnFindAll, _btnClose);
             ActiveControl = _find;
         }
 
-        private void OnReplace(object sender, EventArgs e)
+        private void ToggleFold()
+        {
+            _folded = !_folded;
+            _btnFold.Text = _folded ? "Fold out >>" : "<< Fold in";
+            ClientSize = new Size(ClientSize.Width, _folded ? CollapsedH : ExpandedH);
+            _resultsPanel.Visible = !_folded;
+        }
+
+        private void DoFindAll()
         {
             if (_find.TextLength == 0) { SetError(_find, "Enter text to find."); return; }
             SetError(_find, null);
+            _matches = Search(_find.Text);
+            PopulateGrid();
+            if (_folded) ToggleFold();
+        }
 
-            string find = _find.Text, rep = _replace.Text;
-            bool mc = _matchCase.Checked;
-            int total = 0;
+        private void DoReplaceSelected()
+        {
+            if (_find.TextLength == 0) { SetError(_find, "Enter text to find."); return; }
+            SetError(_find, null);
+            if (_matches.Count == 0) { DoFindAll(); return; }
+            int idx = _grid.SelectedIndices.Count > 0 ? _grid.SelectedIndices[0] : 0;
+            if (idx >= _matches.Count) return;
+            ApplyReplacement(_matches[idx]);
+            _matches.RemoveAt(idx);
+            PopulateGrid();
+        }
 
-            Excel.Workbook wb = Globals.ThisAddIn.Application.ActiveWorkbook;
-            if (wb == null) { Close(); return; }
+        private void DoReplaceAll()
+        {
+            if (_find.TextLength == 0) { SetError(_find, "Enter text to find."); return; }
+            SetError(_find, null);
+            var found = Search(_find.Text);
+            int count = 0;
+            foreach (var m in found) { ApplyReplacement(m); count++; }
+            _matches.Clear();
+            PopulateGrid();
+            MessageBox.Show(count + " replacement(s) made.",
+                FindReplaceAcrossSheetsCommand.Def.Label, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
-            foreach (Excel.Worksheet ws in wb.Worksheets)
+        private List<FindMatch> Search(string rawFind)
+        {
+            var results = new List<FindMatch>();
+            bool mc      = _matchCase.Checked;
+            bool mw      = _matchWord.Checked;
+            bool me      = _matchAll.Checked;
+            bool fmlas   = _lookIn.SelectedIndex == 0;
+            bool byRows  = _search.SelectedIndex == 0;
+            var cmp      = mc ? StringComparison.Ordinal : StringComparison.OrdinalIgnoreCase;
+            string find  = Decode(rawFind);
+            string rep   = Decode(_replace.Text);
+
+            var xlAt     = me  ? Excel.XlLookAt.xlWhole : Excel.XlLookAt.xlPart;
+            var xlLookIn = fmlas ? Excel.XlFindLookIn.xlFormulas : Excel.XlFindLookIn.xlValues;
+            var xlOrder  = byRows ? Excel.XlSearchOrder.xlByRows : Excel.XlSearchOrder.xlByColumns;
+
+            foreach (var ws in SheetsToSearch())
             {
-                Excel.Range found = ws.UsedRange.Find(find,
-                    Type.Missing, Excel.XlFindLookIn.xlValues, Excel.XlLookAt.xlPart,
-                    Excel.XlSearchOrder.xlByRows, Excel.XlSearchDirection.xlNext,
-                    mc, Type.Missing, Type.Missing);
+                if (ws == null) continue;
+                Excel.Range used;
+                try { used = ws.UsedRange; } catch { continue; }
 
-                if (found == null) continue;
-                string firstAddr = found.Address;
+                Excel.Range first = null;
+                try
+                {
+                    first = used.Find(find, Type.Missing, xlLookIn, xlAt, xlOrder,
+                                      Excel.XlSearchDirection.xlNext, mc, Type.Missing, Type.Missing);
+                }
+                catch { }
+                if (first == null) continue;
+
+                string startAddr = first.Address;
+                Excel.Range cur = first;
                 do
                 {
-                    object v = found.Value2;
-                    if (v != null) found.Value2 = v.ToString().Replace(find, rep);
-                    total++;
-                    found = ws.UsedRange.FindNext(found);
-                } while (found != null && found.Address != firstAddr);
-            }
+                    string val   = cur.Value2 != null ? cur.Value2.ToString() : "";
+                    string fmla  = (cur.HasFormula as bool? == true)
+                                   ? (cur.Formula as string ?? val) : val;
+                    string text  = fmlas ? fmla : val;
 
-            Close();
-            MessageBox.Show(total + " replacement(s) made across all sheets.",
-                FindReplaceAcrossSheetsCommand.Def.Label, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Post-filter for whole-word (Excel Find has no native whole-word option).
+                    if (mw && !MatchesWholeWord(text, find, cmp)) goto next;
+
+                    results.Add(new FindMatch
+                    {
+                        Sheet    = ws.Name,
+                        Address  = cur.Address,
+                        Value    = val,
+                        Formula  = fmla,
+                        NewValue = text.Replace(find, rep),
+                        Cell     = cur
+                    });
+                    next:
+                    try { cur = used.FindNext(cur); } catch { break; }
+                } while (cur != null && cur.Address != startAddr);
+            }
+            return results;
+        }
+
+        private static bool MatchesWholeWord(string text, string find, StringComparison cmp)
+        {
+            if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(find)) return false;
+            int idx = text.IndexOf(find, cmp);
+            while (idx >= 0)
+            {
+                bool startOk = idx == 0 || !char.IsLetterOrDigit(text[idx - 1]);
+                bool endOk   = idx + find.Length >= text.Length || !char.IsLetterOrDigit(text[idx + find.Length]);
+                if (startOk && endOk) return true;
+                idx = text.IndexOf(find, idx + 1, cmp);
+            }
+            return false;
+        }
+
+        private IEnumerable<Excel.Worksheet> SheetsToSearch()
+        {
+            var wb = Globals.ThisAddIn.Application.ActiveWorkbook;
+            if (wb == null) yield break;
+            if (_scopeAll.Checked)
+            {
+                foreach (Excel.Worksheet ws in wb.Worksheets) yield return ws;
+            }
+            else
+            {
+                yield return Globals.ThisAddIn.Application.ActiveSheet as Excel.Worksheet;
+            }
+        }
+
+        private void ApplyReplacement(FindMatch m)
+        {
+            try
+            {
+                if (m.Cell == null) return;
+                string find = Decode(_find.Text);
+                string rep  = Decode(_replace.Text);
+                bool fmlas  = _lookIn.SelectedIndex == 0;
+                if (fmlas && (m.Cell.HasFormula as bool? == true))
+                    m.Cell.Formula = (m.Cell.Formula as string ?? "").Replace(find, rep);
+                else
+                {
+                    object v = m.Cell.Value2;
+                    if (v != null) m.Cell.Value2 = v.ToString().Replace(find, rep);
+                }
+            }
+            catch { }
+        }
+
+        private void PopulateGrid()
+        {
+            _grid.Items.Clear();
+            foreach (var m in _matches)
+            {
+                var item = new ListViewItem(m.Sheet);
+                item.SubItems.Add(m.Address);
+                item.SubItems.Add(m.Value);
+                item.SubItems.Add(m.Formula);
+                item.SubItems.Add(m.Value);
+                item.SubItems.Add(m.NewValue);
+                _grid.Items.Add(item);
+            }
+            _lblResults.Text = "Results found: " + _matches.Count;
+        }
+
+        private static string GetSelectionAddress()
+        {
+            try
+            {
+                var rng = Globals.ThisAddIn.Application.Selection as Excel.Range;
+                return rng != null ? rng.Address : "";
+            }
+            catch { return ""; }
+        }
+
+        private static string Decode(string s) => s
+            .Replace("{lf}",  "\n")
+            .Replace("{cr}",  "\r")
+            .Replace("{tab}", "\t");
+
+        private sealed class FindMatch
+        {
+            public string Sheet    { get; set; }
+            public string Address  { get; set; }
+            public string Value    { get; set; }
+            public string Formula  { get; set; }
+            public string NewValue { get; set; }
+            public Excel.Range Cell { get; set; }
         }
     }
 

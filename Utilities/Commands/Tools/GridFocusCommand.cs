@@ -14,7 +14,7 @@ namespace utilities.Commands.Tools
             Id = "View.GridFocus", Label = "Grid Focus",
             Screentip = "Grid Focus",
             Supertip = "Highlight the row and column of the active cell for easier reading.",
-            ImageMso = "ViewGridlines",
+            ImageId = "GridFocus",
             Tab = "Utilities", Group = "View", Order = 5,
             RequiresSelection = false, UndoMode = UndoMode.None
         };
@@ -40,7 +40,7 @@ namespace utilities.Commands.Tools
 
         private readonly CheckBox _chkArea = new CheckBox { Text = "Highlight the area of active cell",     AutoSize = true };
         private readonly CheckBox _chkEdit = new CheckBox { Text = "Highlight the area on editing of cell", AutoSize = true };
-        private readonly CheckBox _chkOn   = new CheckBox { Text = "Enable Grid Focus", Checked = true,     AutoSize = true };
+        private readonly CheckBox _chkOn   = new CheckBox { Text = "Enable Grid Focus",                     AutoSize = true };
 
         private readonly Panel _preview = new Panel { BorderStyle = BorderStyle.FixedSingle };
         private Color _color = Color.FromArgb(0x5F, 0xC8, 0xD8);
@@ -139,7 +139,7 @@ namespace utilities.Commands.Tools
             _rbCriss.Checked = true; _rbWide.Checked = true;
             _color = Color.FromArgb(0x5F, 0xC8, 0xD8);
             _thick.Value = 1; _trans.Value = 70;
-            _chkArea.Checked = false; _chkEdit.Checked = false; _chkOn.Checked = true;
+            _chkArea.Checked = false; _chkEdit.Checked = false; _chkOn.Checked = false;
             SyncColorBtn(); SyncThickLabel(); SyncTransLabel(); SyncThickEnabled();
             _preview.Invalidate();
         }
