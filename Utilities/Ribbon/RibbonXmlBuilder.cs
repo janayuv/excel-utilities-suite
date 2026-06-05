@@ -175,6 +175,7 @@ namespace utilities.Ribbon
             sb.Append("<tab id=\"tab_suite\" label=\"Suite\">");
 
             sb.Append("<group id=\"grp_quick\" label=\"Quick\">");
+            AppendStaticButton(sb, RibbonController.SysFindRunTag, "Find & Run", true);
             AppendDynamicButton(sb, RibbonController.SysRepeatTag, "Repeat", true);
             sb.Append("</group>");
 
@@ -225,6 +226,7 @@ namespace utilities.Ribbon
             {
                 { "sys.about",   "Help" },
                 { "sys.openlog", "FileOpen" },
+                { "sys.findrun", "FindDialog" },
             };
 
         private static void AppendStaticButton(StringBuilder sb, string tag, string label, bool large)

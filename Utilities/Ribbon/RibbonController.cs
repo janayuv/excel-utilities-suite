@@ -24,6 +24,7 @@ namespace utilities.Ribbon
         private const string SysAbout = "sys.about";
         private const string SysOpenLog = "sys.openlog";
         private const string SysRepeat = "sys.repeat";
+        private const string SysFindRun = "sys.findrun";
 
         private IRibbonUI _ribbon;
 
@@ -76,6 +77,9 @@ namespace utilities.Ribbon
                 case SysRepeat:
                     RepeatService.Replay();
                     Invalidate();
+                    return;
+                case SysFindRun:
+                    ShowFindRun();
                     return;
             }
 
@@ -142,6 +146,23 @@ namespace utilities.Ribbon
             return License.Current.State != LicenseState.Licensed;
         }
 
+        private void ShowFindRun()
+        {
+            string id = null;
+            using (var dlg = new utilities.Dialogs.FindRunDialog())
+            {
+                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    id = dlg.SelectedCommandId;
+            }
+
+            if (!string.IsNullOrEmpty(id))
+            {
+                IExcelCommand cmd = CommandRegistry.Get(id);
+                if (cmd != null) cmd.Execute(); // flows through RunGuarded -> updates Repeat
+            }
+            Invalidate();
+        }
+
         private void ShowAbout()
         {
             var svc = License.Current;
@@ -187,5 +208,6 @@ namespace utilities.Ribbon
         internal static string SysAboutTag { get { return SysAbout; } }
         internal static string SysOpenLogTag { get { return SysOpenLog; } }
         internal static string SysRepeatTag { get { return SysRepeat; } }
+        internal static string SysFindRunTag { get { return SysFindRun; } }
     }
 }
