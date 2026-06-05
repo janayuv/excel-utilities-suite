@@ -172,12 +172,14 @@
 
 | Id | Label | Notes |
 |---|---|---|
+| sys.findrun | Find & Run a Utility | Searchable picker over all commands; runs the chosen tool |
+| sys.repeat | Repeat Last Tool | Dynamic label ("Repeat: <tool>"); silently re-applies last repeatable tool |
 | sys.undo | Undo Last Action | Dynamic label; enabled when stack non-empty |
 | sys.about | About | Version + license status |
 | sys.openlog | Open Log | Opens %APPDATA% error log |
 
 ---
 
-**Total: 113 tool commands + 3 system controls = 116 ribbon buttons**
+**Total: 113 tool commands + 5 system controls = 118 ribbon buttons**
 
 *UndoMode breakdown — None: 79 · FullSnapshot: 25 · FormulaOnly: 3 · PartialSnapshot: 0*
