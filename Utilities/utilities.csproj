@@ -310,6 +310,7 @@
     <Compile Include="Ribbon\RibbonController.cs" />
     <Compile Include="Ribbon\RibbonXmlBuilder.cs" />
     <Compile Include="Dialogs\DialogBase.cs" />
+    <Compile Include="Dialogs\FindRunDialog.cs" />
     <Compile Include="Commands\Tools\RangeCommands.cs" />
     <Compile Include="Commands\Tools\TextCommands2.cs" />
     <Compile Include="Commands\Tools\FormatCommands.cs" />
