@@ -48,6 +48,10 @@ namespace utilities.Commands
                 work(ctx);
 
                 UndoService.Push(tx);
+                // Capture this invocation for "Repeat Last Tool". Safe against chained
+                // replays: RepeatService.Replay re-invokes RunGuarded with the ORIGINAL
+                // captured work closure, so repeating never recurses into Replay itself.
+                RepeatService.Record(def, work);
                 return true;
             }
             catch (Exception ex)
