@@ -23,6 +23,7 @@ namespace utilities.Ribbon
         private const string SysUndo = "sys.undo";
         private const string SysAbout = "sys.about";
         private const string SysOpenLog = "sys.openlog";
+        private const string SysRepeat = "sys.repeat";
 
         private IRibbonUI _ribbon;
 
@@ -72,6 +73,10 @@ namespace utilities.Ribbon
                 case SysOpenLog:
                     OpenLog();
                     return;
+                case SysRepeat:
+                    RepeatService.Replay();
+                    Invalidate();
+                    return;
             }
 
             IExcelCommand cmd = CommandRegistry.Get(id);
@@ -91,6 +96,12 @@ namespace utilities.Ribbon
             {
                 string next = UndoService.NextUndoLabel;
                 return next != null ? "Undo " + next : "Undo Last Action";
+            }
+            if (id == SysRepeat)
+            {
+                return RepeatService.CanRepeat
+                    ? "Repeat: " + RepeatService.LastLabel
+                    : "Repeat Last Tool";
             }
             CommandDefinition def = CommandRegistry.GetDefinition(id);
             return def != null ? def.Label : id;
@@ -120,6 +131,7 @@ namespace utilities.Ribbon
         {
             string id = TagOf(control);
             if (id == SysUndo) return UndoService.CanUndo;
+            if (id == SysRepeat) return RepeatService.CanRepeat;
             return true; // license-locked tools still show; they prompt to upgrade on click
         }
 
@@ -174,5 +186,6 @@ namespace utilities.Ribbon
         internal static string SysUndoTag { get { return SysUndo; } }
         internal static string SysAboutTag { get { return SysAbout; } }
         internal static string SysOpenLogTag { get { return SysOpenLog; } }
+        internal static string SysRepeatTag { get { return SysRepeat; } }
     }
 }
