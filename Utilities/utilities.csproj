@@ -323,6 +323,7 @@
     <Compile Include="Commands\Tools\TextFormattingCommands.cs" />
     <Compile Include="Commands\Tools\FormatAdvancedCommands.cs" />
     <Compile Include="Commands\Tools\DataAdvancedCommands.cs" />
+    <Compile Include="Commands\Tools\FormulaCommands.cs" />
     <Compile Include="Commands\Tools\SheetManagementCommands.cs" />
     <Compile Include="Commands\Tools\ImportUtilityCommands.cs" />
   </ItemGroup>
