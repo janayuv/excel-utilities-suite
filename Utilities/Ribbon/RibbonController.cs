@@ -23,6 +23,8 @@ namespace utilities.Ribbon
         private const string SysUndo = "sys.undo";
         private const string SysAbout = "sys.about";
         private const string SysOpenLog = "sys.openlog";
+        private const string SysRepeat = "sys.repeat";
+        private const string SysFindRun = "sys.findrun";
 
         private IRibbonUI _ribbon;
 
@@ -72,6 +74,13 @@ namespace utilities.Ribbon
                 case SysOpenLog:
                     OpenLog();
                     return;
+                case SysRepeat:
+                    RepeatService.Replay();
+                    Invalidate();
+                    return;
+                case SysFindRun:
+                    ShowFindRun();
+                    return;
             }
 
             IExcelCommand cmd = CommandRegistry.Get(id);
@@ -91,6 +100,12 @@ namespace utilities.Ribbon
             {
                 string next = UndoService.NextUndoLabel;
                 return next != null ? "Undo " + next : "Undo Last Action";
+            }
+            if (id == SysRepeat)
+            {
+                return RepeatService.CanRepeat
+                    ? "Repeat: " + RepeatService.LastLabel
+                    : "Repeat Last Tool";
             }
             CommandDefinition def = CommandRegistry.GetDefinition(id);
             return def != null ? def.Label : id;
@@ -120,6 +135,7 @@ namespace utilities.Ribbon
         {
             string id = TagOf(control);
             if (id == SysUndo) return UndoService.CanUndo;
+            if (id == SysRepeat) return RepeatService.CanRepeat;
             return true; // license-locked tools still show; they prompt to upgrade on click
         }
 
@@ -128,6 +144,23 @@ namespace utilities.Ribbon
         public bool GetLicenseVisible(IRibbonControl control)
         {
             return License.Current.State != LicenseState.Licensed;
+        }
+
+        private void ShowFindRun()
+        {
+            string id = null;
+            using (var dlg = new utilities.Dialogs.FindRunDialog())
+            {
+                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    id = dlg.SelectedCommandId;
+            }
+
+            if (!string.IsNullOrEmpty(id))
+            {
+                IExcelCommand cmd = CommandRegistry.Get(id);
+                if (cmd != null) cmd.Execute(); // flows through RunGuarded -> updates Repeat
+            }
+            Invalidate();
         }
 
         private void ShowAbout()
@@ -174,5 +207,7 @@ namespace utilities.Ribbon
         internal static string SysUndoTag { get { return SysUndo; } }
         internal static string SysAboutTag { get { return SysAbout; } }
         internal static string SysOpenLogTag { get { return SysOpenLog; } }
+        internal static string SysRepeatTag { get { return SysRepeat; } }
+        internal static string SysFindRunTag { get { return SysFindRun; } }
     }
 }

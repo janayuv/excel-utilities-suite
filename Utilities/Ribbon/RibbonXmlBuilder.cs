@@ -174,6 +174,11 @@ namespace utilities.Ribbon
         {
             sb.Append("<tab id=\"tab_suite\" label=\"Suite\">");
 
+            sb.Append("<group id=\"grp_quick\" label=\"Quick\">");
+            AppendStaticButton(sb, RibbonController.SysFindRunTag, "Find & Run", true);
+            AppendDynamicButton(sb, RibbonController.SysRepeatTag, "Repeat", true);
+            sb.Append("</group>");
+
             // License group — hidden automatically once a valid key is stored.
             sb.Append("<group id=\"grp_license\" label=\"License\" getVisible=\"GetLicenseVisible\">");
             sb.Append("<button id=\"btn_Suite_ActivateLicense\" tag=\"Suite.ActivateLicense\"");
@@ -183,7 +188,7 @@ namespace utilities.Ribbon
             sb.Append("</group>");
 
             sb.Append("<group id=\"grp_history\" label=\"History\">");
-            AppendDynamicButton(sb, RibbonController.SysUndoTag, true);
+            AppendDynamicButton(sb, RibbonController.SysUndoTag, "Undo", true);
             sb.Append("</group>");
 
             sb.Append("<group id=\"grp_help\" label=\"Help\">");
@@ -207,12 +212,12 @@ namespace utilities.Ribbon
               .Append(" size=\"").Append(def.LargeButton ? "large" : "normal").Append("\"/>");
         }
 
-        private static void AppendDynamicButton(StringBuilder sb, string tag, bool large)
+        private static void AppendDynamicButton(StringBuilder sb, string tag, string imageMso, bool large)
         {
             sb.Append("<button id=\"").Append(SafeId("btn", tag)).Append("\"")
               .Append(" tag=\"").Append(Esc(tag)).Append("\"")
               .Append(" getLabel=\"GetLabel\" onAction=\"OnAction\" getEnabled=\"GetEnabled\"")
-              .Append(" imageMso=\"Undo\"")
+              .Append(" imageMso=\"").Append(Esc(imageMso)).Append("\"")
               .Append(" size=\"").Append(large ? "large" : "normal").Append("\"/>");
         }
 
@@ -221,6 +226,7 @@ namespace utilities.Ribbon
             {
                 { "sys.about",   "Help" },
                 { "sys.openlog", "FileOpen" },
+                { "sys.findrun", "FindDialog" },
             };
 
         private static void AppendStaticButton(StringBuilder sb, string tag, string label, bool large)

@@ -91,3 +91,19 @@ Run before every batch lands. Record PASS / FAIL(note) / N/A per tool per bucket
 ---
 
 *Cells: PASS · FAIL(description) · N/A · SKIP(reason)*
+
+## Find & Run + Repeat Last Tool (v1.2)
+
+| # | Scenario | Steps | Expected | Pass |
+|---|---|---|---|---|
+| FR1 | Repeat after direct tool | Run Proper Case on A1:A5; select B1:B5; click Repeat | B1:B5 proper-cased, no dialog | |
+| FR2 | Repeat after dialog tool | Round Values to 2 dp on a range; select another range; click Repeat | Second range rounded to 2 dp, no dialog | |
+| FR3 | Repeat, no selection | Repeat with nothing selectable | Friendly "select a range" warning, no crash | |
+| FR4 | Repeat after excluded tool | Export to PDF; check Repeat label | Label unchanged (still prior repeatable tool) | |
+| FR5 | Repeat with empty history | Fresh session; open Suite tab | Repeat button greyed/disabled | |
+| FR6 | Find & Run filter | Open Find & Run; type "case" | List narrows to case tools | |
+| FR7 | Find & Run keyboard | Type, press Down then Enter | Highlighted tool runs | |
+| FR8 | Find & Run double-click | Double-click a tool | Tool runs | |
+| FR9 | Find & Run launches dialog tool | Pick Add Text | Add Text dialog opens normally | |
+| FR10 | Repeat reflects Find & Run | Run a tool via Find & Run; check Repeat label | "Repeat: <that tool>" | |
+| FR11 | Startup self-check | Read log after load | "[Self-check] PASS — 113 commands registered, 0 definition warnings." | |

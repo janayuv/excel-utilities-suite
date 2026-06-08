@@ -87,7 +87,7 @@ namespace utilities.Commands.Tools
         }
     }
 
-    /// <summary>Merge all .xlsx files in a folder into the active workbook as separate sheets.</summary>
+    /// <summary>Merge selected .xlsx / .xlsm / .xls files into the active workbook as separate sheets.</summary>
     [ExcelCommand]
     public sealed class MergeWorkbooksCommand : CommandBase
     {
@@ -95,8 +95,8 @@ namespace utilities.Commands.Tools
         {
             Id = "Sheet.MergeWorkbooks",
             Label = "Merge Workbooks",
-            Screentip = "Merge Workbooks from Folder",
-            Supertip = "Import every sheet from each .xlsx file in a chosen folder into the active workbook as new sheets.",
+            Screentip = "Merge Workbooks",
+            Supertip = "Pick one or more Excel files (.xlsx, .xlsm, .xls) and import every sheet from each into the active workbook as new sheets.",
             ImageId = "MergeWorkbooks",
             Tab = "Workbook & Sheets",
             Group = "Workbook",
@@ -110,16 +110,16 @@ namespace utilities.Commands.Tools
             Excel.Workbook destWb = ctx.App.ActiveWorkbook;
             if (destWb == null) return;
 
-            using (var dlg = new FolderBrowserDialog { Description = "Select folder containing .xlsx files" })
+            using (var dlg = new OpenFileDialog
+            {
+                Title = "Select workbook files to merge",
+                Filter = "Excel Files (*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|All Files (*.*)|*.*",
+                Multiselect = true,
+                CheckFileExists = true,
+            })
             {
                 if (dlg.ShowDialog() != DialogResult.OK) return;
-                string[] files = Directory.GetFiles(dlg.SelectedPath, "*.xlsx");
-                if (files.Length == 0)
-                {
-                    MessageBox.Show("No .xlsx files found in that folder.", Definition.Label,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                string[] files = dlg.FileNames;
 
                 int sheets = 0;
                 for (int fi = 0; fi < files.Length; fi++)

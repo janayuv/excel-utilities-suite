@@ -298,6 +298,7 @@
     <Compile Include="Services\ProgressService.cs" />
     <Compile Include="Services\ErrorService.cs" />
     <Compile Include="Services\UndoService.cs" />
+    <Compile Include="Services\RepeatService.cs" />
     <Compile Include="Services\SettingsService.cs" />
     <Compile Include="Services\IconProvider.cs" />
     <Compile Include="Services\KeyboardHook.cs" />
@@ -309,6 +310,7 @@
     <Compile Include="Ribbon\RibbonController.cs" />
     <Compile Include="Ribbon\RibbonXmlBuilder.cs" />
     <Compile Include="Dialogs\DialogBase.cs" />
+    <Compile Include="Dialogs\FindRunDialog.cs" />
     <Compile Include="Commands\Tools\RangeCommands.cs" />
     <Compile Include="Commands\Tools\TextCommands2.cs" />
     <Compile Include="Commands\Tools\FormatCommands.cs" />
@@ -321,6 +323,7 @@
     <Compile Include="Commands\Tools\TextFormattingCommands.cs" />
     <Compile Include="Commands\Tools\FormatAdvancedCommands.cs" />
     <Compile Include="Commands\Tools\DataAdvancedCommands.cs" />
+    <Compile Include="Commands\Tools\FormulaCommands.cs" />
     <Compile Include="Commands\Tools\SheetManagementCommands.cs" />
     <Compile Include="Commands\Tools\ImportUtilityCommands.cs" />
   </ItemGroup>
