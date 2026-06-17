@@ -43,6 +43,10 @@ namespace utilities
         private void OnWorkbookBeforeClose(Excel.Workbook wb, ref bool cancel)
         {
             GridFocusService.ClearLastSheet();
+            // Undo/Repeat captures hold sheet names + A1 addresses that become meaningless
+            // once a workbook closes; restoring them would target the wrong workbook.
+            UndoService.Clear();
+            RepeatService.Clear();
         }
 
         private void OnSheetSelectionChange(object sh, Excel.Range target)

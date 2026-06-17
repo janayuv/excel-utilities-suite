@@ -59,6 +59,16 @@ namespace utilities.Services
             _lastWork = work;
         }
 
+        /// <summary>
+        /// Forget the stored last action. Called when a workbook closes so a captured work
+        /// closure cannot replay against a different workbook (or hold a stale COM reference).
+        /// </summary>
+        public static void Clear()
+        {
+            _lastDef = null;
+            _lastWork = null;
+        }
+
         /// <summary>Pure predicate: may this tool be silently repeated?</summary>
         public static bool IsRepeatable(CommandDefinition def)
         {
