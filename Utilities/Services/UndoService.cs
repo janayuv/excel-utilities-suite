@@ -24,8 +24,10 @@ namespace utilities.Services
 
     /// <summary>
     /// Captures the state needed to reverse a single command and exposes an undo stack.
-    /// Restore is driven by the suite's own "Undo Last Action" button rather than by
-    /// hijacking Excel's native Ctrl+Z, which is unreliable for managed add-ins.
+    /// Restore is driven by the suite's own "Undo Last Action" button and by a global
+    /// Ctrl+Z hook (see <see cref="KeyboardHook"/>), which consumes Ctrl+Z only while the
+    /// add-in stack is non-empty and Excel is the foreground app, otherwise letting the key
+    /// fall through to Excel's native undo.
     /// </summary>
     public static class UndoService
     {

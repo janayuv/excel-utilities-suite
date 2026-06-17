@@ -51,10 +51,17 @@ namespace utilities.Services
         [DllImport("user32.dll")]
         private static extern short GetKeyState(int nVirtKey);
 
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
         private static IntPtr                _hookId = IntPtr.Zero;
         private static LowLevelKeyboardProc  _proc;         // keep delegate alive — prevents GC collection
         private static Action                _onCtrlZ;
         private static SynchronizationContext _syncContext; // captured on UI thread at Install time
+        private static uint                  _ownProcessId; // this process; hook only acts when Excel is foreground
 
         public static void Install(Action onCtrlZ)
         {
@@ -65,6 +72,9 @@ namespace utilities.Services
             _syncContext = SynchronizationContext.Current;
             _onCtrlZ     = onCtrlZ;
             _proc        = HookCallback;
+
+            using (var p = System.Diagnostics.Process.GetCurrentProcess())
+                _ownProcessId = (uint)p.Id;
 
             using (var proc   = System.Diagnostics.Process.GetCurrentProcess())
             using (var module = proc.MainModule)
@@ -97,6 +107,7 @@ namespace utilities.Services
                 var kb = (KBDLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(KBDLLHOOKSTRUCT));
 
                 if (kb.vkCode == VK_Z && (GetKeyState(VK_CONTROL) & 0x8000) != 0
+                    && IsExcelForeground()    // only act when Excel owns the focus; never steal Ctrl+Z from other apps
                     && UndoService.CanUndo)   // pure in-memory check — safe inside hook
                 {
                     // Post the undo to the UI message loop so COM calls happen
@@ -111,6 +122,20 @@ namespace utilities.Services
                 }
             }
             return CallNextHookEx(_hookId, nCode, wParam, lParam);
+        }
+
+        /// <summary>
+        /// True when the foreground window belongs to this (Excel) process. Pure Win32 —
+        /// no COM, no allocation — so it is safe inside the hook callback window. Prevents
+        /// the global low-level hook from swallowing Ctrl+Z in other applications.
+        /// </summary>
+        private static bool IsExcelForeground()
+        {
+            IntPtr hwnd = GetForegroundWindow();
+            if (hwnd == IntPtr.Zero) return false;
+            uint pid;
+            GetWindowThreadProcessId(hwnd, out pid);
+            return pid == _ownProcessId;
         }
     }
 }

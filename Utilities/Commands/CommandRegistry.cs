@@ -30,7 +30,6 @@ namespace utilities.Commands
         public static void Initialize()
         {
             if (_initialised) return;
-            _initialised = true;
 
             Assembly asm = Assembly.GetExecutingAssembly();
             Type[] types;
@@ -72,6 +71,10 @@ namespace utilities.Commands
 
             ErrorService.Log("INFO", "Registered " + _byId.Count + " commands.");
             Validate();
+
+            // Mark complete only after a successful pass. If reflection above threw, the
+            // flag stays false so a later defensive call (e.g. from GetCustomUI) can retry.
+            _initialised = true;
         }
 
         /// <summary>
